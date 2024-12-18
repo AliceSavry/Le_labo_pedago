@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E4/E6 - Gestion Financière</title>
+    <link rel="stylesheet" href="style_gpme.css">
+    <style>
+        .theme {
+            margin: 1rem auto;
+            text-align: left;
+            max-width: 800px;
+        }
+
+        .theme button {
+            width: 100%;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+            color: white;
+            border: none;
+            padding: 1rem;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .theme button:hover {
+            background: linear-gradient(135deg, #dcedc1, #ffd3b6);
+            transform: translateY(-3px);
+        }
+
+        .chapters, .subchapters {
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chapters li, .subchapters li {
+            margin: 0.5rem 0;
+        }
+
+        .chapters a, .subchapters a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-left: 3px solid #a8e6cf;
+            transition: background 0.2s ease;
+        }
+
+        .chapters a:hover, .subchapters a:hover {
+            background: #f8f8f8;
+            border-left-color: #ffd3b6;
+        }
+
+        .theme.open .chapters,
+        .chapter.open .subchapters {
+            display: block;
+        }
+
+        .chapter button {
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: left;
+            width: 100%;
+            padding-left: 2rem;
+        }
+
+        .chapter button:hover {
+            color: #ffd3b6;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <<header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1 class="site-name">Le Labo Pédago</h1>
+        
+        <!-- Bulles Montantes -->
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </header>
+    
+    
+
+    <!-- MENU DÉPLIANT DES THÈMES -->
+    <main>
+        <h2 class="title">Choisissez un thème :</h2>
+        <div class="theme-container">
+            <!-- Thème 1 -->
+            <div class="theme">
+                <button onclick="toggleTheme(this)">Thème 1 - La comptabilité</button>
+                <ul class="chapters">
+                    <!-- Chapitres T1 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)"> Chap 1 - Bienvenue en Gestion</button>
+                        <ul class="subchapters">
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C1/T1C1_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C1/T1C1_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C1/T1C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)"> Chap 2 - Environnement économique et comptable</button>
+                        <ul class="subchapters">
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C2/T1C2_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C2/T1C2_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C2/T1C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)"> Chap 3 - La comptabilité</button>
+                        <ul class="subchapters">
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C3/T1C3_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C3/T1C3_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C3/T1C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)"> Chap 4 - Le suivi de la trésorerie</button>
+                        <ul class="subchapters">
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C4/T1C4_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C4/T1C4_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C4/T1C4_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)"> Chap 5 - La gestion des stocks</button>
+                        <ul class="subchapters">
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C5/T1C5_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C5/T1C5_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                            <li><a href="E4_E6_Gestion_Financiere/T1_La_comptabilite/T1C5/T1C5_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+         <!-- Thème 2 -->
+        <div class="theme">
+            <button onclick="toggleTheme(this)">Thème 2 - L'analyse du bilan</button>
+            <ul class="chapters">
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 1 - Le bilan fonctionnel</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C1/T2C1_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C1/T2C1_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C1/T2C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 2 - L'analyse de la trésorerie</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C2/T2C2_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C2/T2C2_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C2/T2C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 3 - L'analyse des ratios de structure et de fonctionnement</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C3/T2C3_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C3/T2C3_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C3/T2C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 4 - L'analyse financière</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C4/T2C4_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C4/T2C4_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T2_Analyse_du_bilan/T2C4/T2C4_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="theme">
+            <button onclick="toggleTheme(this)">Thème 3 - Analyse du compte de résultat</button>
+            <ul class="chapters">
+                <!-- T3C1 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 1 - L'impact des décisions de gestion sur la rentabilité</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C1/T3C1_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C1/T3C1_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C1/T3C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <!-- T3C2 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 2 - Les SIG</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C2/T3C2_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C2/T3C2_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C2/T3C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <!-- T3C3 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 3 - Les ratios de rentabilité</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C3/T3C3_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C3/T3C3_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C3/T3C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <!-- T3C4 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 4 - Le seuil de rentabilité</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C4/T3C4_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C4/T3C4_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T3_Analyse_compte_de_résultat/T3C4/T3C4_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Thème 4 -->
+        <div class="theme">
+            <button onclick="toggleTheme(this)">Thème 4 - Les investissements</button>
+            <ul class="chapters">
+                <!-- T4C1 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 1 - L'immobilisation</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C1/T4C1_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C1/T4C1_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C1/T4C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <!-- T4C2 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 2 - Le financement</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C2/T4C2_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C2/T4C2_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C2/T4C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <!-- T4C3 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 3 - La rentabilité</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C3/T4C3_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C3/T4C3_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C3/T4C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <!-- T4C4 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 4 - Le choix d'investissement</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C4/T4C4_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C4/T4C4_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T4_Investissement/T4C4/T4C4_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Thème 5 -->
+        <div class="theme">
+            <button onclick="toggleTheme(this)">Thème 5 - La prévision budgétaire</button>
+            <ul class="chapters">
+                <!-- T5C1 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 1 - La prévision du chiffre d'affaires</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C1/T5C1_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C1/T5C1_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C1/T5C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <!-- T5C2 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 2 - La prévision des charges</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C2/T5C2_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C2/T5C2_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C2/T5C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+                <!-- T5C3 -->
+                <li class="chapter">
+                    <button onclick="toggleChapter(this)"> Chap 3 - Le budget de trésorerie</button>
+                    <ul class="subchapters">
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C3/T5C3_Au_Boulot.html">Au boulot!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C3/T5C3_On_se_motive_on_revise.html">On se motive, on révise!</a></li>
+                        <li><a href="E4_E6_Gestion_Financiere/T5_Gestion_de_la_trésorerie/T5C3/T5C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </main>
+
+
+
+    <!-- SCRIPT POUR MENU DÉPLIANT -->
+    <script>
+        function toggleTheme(button) {
+            const theme = button.parentElement;
+            theme.classList.toggle('open');
+        }
+
+        function toggleChapter(button) {
+            const chapter = button.parentElement;
+            chapter.classList.toggle('open');
+        }
+    </script>
+</body>
+    <!-- RETOUR À L'INDEX GPME -->
+    <footer>
+        <button class="btn-back" onclick="window.location.href='index.html';">Retour à l'index GPME</button>
+    </footer>
+</html>

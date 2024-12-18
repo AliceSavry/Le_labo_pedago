@@ -1,0 +1,191 @@
+/* =========================
+   STYLE POUR LES MATIÈRES
+   ========================= */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+/* Global settings */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: #fefeff;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* HEADER MODERNISÉ */
+@keyframes gradientScroll {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header {
+    background: linear-gradient(90deg, #f8c1d9, #fce4ec, #a8e6cf);
+    background-size: 300% 300%;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    animation: gradientScroll 6s infinite alternate ease-in-out;
+    z-index: 0;
+}
+
+header h1.site-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header .logo {
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+header .logo:hover {
+    transform: scale(1.1);
+}
+
+/* Bulles Montantes */
+@keyframes bubbleMove {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-300px) scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-600px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bubbleMove 6s infinite ease-in-out;
+    z-index: 2;
+}
+
+.bubble:nth-child(1) {
+    left: 10%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 8s;
+}
+
+.bubble:nth-child(2) {
+    left: 30%;
+    animation-duration: 5s;
+}
+
+.bubble:nth-child(3) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-duration: 7s;
+}
+
+.bubble:nth-child(4) {
+    left: 70%;
+    animation-duration: 9s;
+}
+
+.bubble:nth-child(5) {
+    left: 90%;
+    width: 40px;
+    height: 40px;
+    animation-duration: 6s;
+}
+
+/* MAIN TITLE */
+h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: #333;
+    margin: 2rem 0;
+}
+
+/* BOUTONS PRINCIPAUX */
+.main-menu {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.btn {
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+    color: white;
+    width: 280px;
+    height: 80px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: dance 2s infinite ease-in-out;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #dcedc1, #ffd3b6);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation de haut en bas (danse) */
+@keyframes dance {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Délai asynchrone pour chaque bouton */
+.btn:nth-child(1) { animation-delay: 0s; }
+.btn:nth-child(2) { animation-delay: 0.3s; }
+.btn:nth-child(3) { animation-delay: 0.6s; }
+
+/* BOUTON RETOUR À L'ACCUEIL */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+.btn-back {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background-color: #e9e9e9;
+    transform: translateY(-3px);
+}

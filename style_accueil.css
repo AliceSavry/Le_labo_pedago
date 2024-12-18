@@ -1,0 +1,225 @@
+/* ===============================
+   STYLE ACCUEIL - MODERNE ET LUDIQUE
+   =============================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+/* Global Settings */
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif; /* Police principale */
+    background-color: #fefeff;
+    color: #333;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header avec Animation Gradient Scroll */
+@keyframes gradientScroll {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header {
+    background: linear-gradient(90deg, #f8c1d9, #fce4ec, #a8e6cf);
+    background-size: 300% 300%;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: white;
+    position: relative; /* Nécessaire pour les bulles */
+    overflow: hidden;
+    animation: gradientScroll 6s infinite alternate ease-in-out;
+    z-index: 0;
+}
+
+header h1 {
+    font-family: 'Fredoka One', cursive; /* Police pour le titre */
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* Bulles Montantes */
+@keyframes bubbleMove {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-300px) scale(1);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-600px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bubbleMove 6s infinite ease-in-out;
+    z-index: 2;
+}
+
+.bubble:nth-child(1) {
+    left: 10%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 8s;
+}
+
+.bubble:nth-child(2) {
+    left: 30%;
+    animation-duration: 5s;
+}
+
+.bubble:nth-child(3) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-duration: 7s;
+}
+
+.bubble:nth-child(4) {
+    left: 70%;
+    animation-duration: 9s;
+}
+
+.bubble:nth-child(5) {
+    left: 90%;
+    width: 40px;
+    height: 40px;
+    animation-duration: 6s;
+}
+
+/* Carousel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 50vh; /* Ajusté pour s'adapter à la fenêtre */
+    max-height: 400px;
+    margin: 1rem auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-container img.active {
+    opacity: 1;
+}
+
+/* Motivation Text */
+.motivation-wrapper {
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.motivation-text {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.8rem;
+    color: #70c1b3;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Menu Buttons */
+.main-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 2rem auto;
+}
+
+@keyframes dance {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.btn {
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    animation: dance 1.5s infinite ease-in-out;
+}
+
+.btn:nth-child(1) { animation-delay: 0s; }
+.btn:nth-child(2) { animation-delay: 0.2s; }
+.btn:nth-child(3) { animation-delay: 0.4s; }
+
+.btn:hover {
+    background: linear-gradient(135deg, #dcedc1, #ffd3b6);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: linear-gradient(90deg, #f8c1d9, #fce4ec, #a8e6cf);
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}

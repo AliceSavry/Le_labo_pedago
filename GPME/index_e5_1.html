@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E5.1 - Participer à la gestion des risques</title>
+    <link rel="stylesheet" href="style_gpme.css">
+    <style>
+        .theme {
+            margin: 1rem auto;
+            text-align: left;
+            max-width: 800px;
+        }
+
+        .theme button {
+            width: 100%;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+            color: white;
+            border: none;
+            padding: 1rem;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .theme button:hover {
+            background: linear-gradient(135deg, #dcedc1, #ffd3b6);
+            transform: translateY(-3px);
+        }
+
+        .chapters, .subchapters {
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chapters li, .subchapters li {
+            margin: 0.5rem 0;
+        }
+
+        .chapters a, .subchapters a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-left: 3px solid #a8e6cf;
+            transition: background 0.2s ease;
+        }
+
+        .chapters a:hover, .subchapters a:hover {
+            background: #f8f8f8;
+            border-left-color: #ffd3b6;
+        }
+
+        .theme.open .chapters,
+        .chapter.open .subchapters {
+            display: block;
+        }
+
+        .chapter button {
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: left;
+            width: 100%;
+            padding-left: 2rem;
+        }
+
+        .chapter button:hover {
+            color: #ffd3b6;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1 class="site-name">Le Labo Pédago</h1>
+        
+        <!-- Bulles Montantes -->
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </header>
+    
+    
+
+    <!-- MENU DÉPLIANT DES THÈMES -->
+    <main>
+        <h2 class="title">Choisissez un thème :</h2>
+        <div class="theme-container">
+            <!-- Thème 1 -->
+            <div class="theme">
+                <button onclick="toggleTheme(this)">📋 Thème 1 - Présentation E5.1</button>
+                <ul class="chapters">
+                    <!-- Chapitres T1 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📂 Chap. 1 - Présentation du dossier</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T1_Presentation_E5.1/T1C1_Presentation_dossier/T1C1_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T1_Presentation_E5.1/T1C1_Presentation_dossier/T1C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🗣️ Chap. 2 - Présentation orale</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T1_Presentation_E5.1/T1C2_Presentation_oral/T1C2_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T1_Presentation_E5.1/T1C2_Presentation_oral/T1C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="theme">
+                <button onclick="toggleTheme(this)">🏢 Thème 2 - Présentation de l'entreprise</button>
+                <ul class="chapters">
+                    <!-- Chapitre T2C1 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📂 Chap. 1 - L'entreprise</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T2_Presentation_de_l_entreprise/T2C1_Entreprise/T2C1_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T2_Presentation_de_l_entreprise/T2C1_Entreprise/T2C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T2C2 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📊 Chap. 2 - Analyse managériale</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T2_Presentation_de_l_entreprise/T2C2_analyse_manageriale/T2C2_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T2_Presentation_de_l_entreprise/T2C2_analyse_manageriale/T2C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T2C3 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🚀 Chap. 3 - Stratégie</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T2_Presentation_de_l_entreprise/T2C3_Strategie/T2C3_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T2_Presentation_de_l_entreprise/T2C3_Strategie/T2C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T2C4 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🔍 Chap. 4 - Mise en place d'une veille</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T2_Presentation_de_l_entreprise/T2C4_Mise_en_place_veille/T2C4_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T2_Presentation_de_l_entreprise/T2C4_Mise_en_place_veille/T2C4_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="theme">
+                <button onclick="toggleTheme(this)">⚠️ Thème 3 - Cartographie des risques</button>
+                <ul class="chapters">
+                    <!-- Chapitre T3C0 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🗺️ Chap. 0 - Méthode de cartographie des risques</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C0_Methode_cartographie_risques/T3C0_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C0_Methode_cartographie_risques/T3C0_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T3C1 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">💻 Chap. 1 - Risques informatiques</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C1_Risques_informatiques/T3C1_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C1_Risques_informatiques/T3C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T3C2 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🛠️ Chap. 2 - Risques SST</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C2_Risques_SST/T3C2_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C2_Risques_SST/T3C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T3C3 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🧠 Chap. 3 - RPS (Risques psychosociaux)</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C3_RPS/T3C3_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C3_RPS/T3C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T3C4 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🌳 Chap. 4 - Risques environnementaux</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C4_Risques_environnementaux/T3C4_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C4_Risques_environnementaux/T3C4_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T3C5 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🏗️ Chap. 5 - Risques matériels</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C5_Risques_materiels/T3C5_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C5_Risques_materiels/T3C5_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T3C6 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">💰 Chap. 6 - Risques financiers</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C6_Risques_financiers/T3C6_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C6_Risques_financiers/T3C6_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T3C7 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🛒 Chap. 7 - Risques clients</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C7_Risques_Clients/T3C7_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C7_Risques_Clients/T3C7_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T3C8 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🔍 Chap. 8 - Analyse qualité</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C8_Analyse_qualite/T3C8_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T3_Cartographie_des_risques/T3C8_Analyse_qualite/T3C8_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="theme">
+                <button onclick="toggleTheme(this)">🛠️ Thème 4 - Résolution de la problématique</button>
+                <ul class="chapters">
+                    <!-- Chapitre T4C1 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📋 Chap. 1 - Présentation du risque principal</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C1_Presentation_risque_principal/T4C1_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C1_Presentation_risque_principal/T4C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T4C2 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">✅ Chap. 2 - Plans d'actions</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C2_Plans_d_actions/T4C2_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C2_Plans_d_actions/T4C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T4C3 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🔍 Chap. 3 - Recherche des causes (Ishikawa)</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C3_Recherche_des_causes_Ishikawa/T4C3_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C3_Recherche_des_causes_Ishikawa/T4C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T4C4 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📆 Chap. 4 - Planification du projet</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C4_Planification_du_projet/T4C4_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C4_Planification_du_projet/T4C4_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T4C5 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📈 Chap. 5 - Évaluation du projet</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C5_Evaluation_du_projet/T4C5_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C5_Evaluation_du_projet/T4C5_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T4C6 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📣 Chap. 6 - Communication du projet</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C6_Communication_du_projet/T4C6_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C6_Communication_du_projet/T4C6_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T4C7 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📊 Chap. 7 - Suivi et contrôle des actions correctives</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C7_Suivi_et_Controle_des_Actions_Correctives/T4C7_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T4_Resolution_de_la_problematique/T4C7_Suivi_et_Controle_des_Actions_Correctives/T4C7_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="theme">
+                <button onclick="toggleTheme(this)">📊 Thème 5 - Analyse post-mortem</button>
+                <ul class="chapters">
+                    <!-- Chapitre T5C1 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📝 Chap. 1 - Rédaction du dossier</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T5_Redaction_du_dossier/T5C1_Redaction_du_dossier/T5C1_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T5_Redaction_du_dossier/T5C1_Redaction_du_dossier/T5C1_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T5C2 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🎯 Chap. 2 - Préparation de l'oral</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T5_Redaction_du_dossier/T5C2_Preparation_oral/T5C2_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T5_Redaction_du_dossier/T5C2_Preparation_oral/T5C2_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T5C3 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">📜 Chap. 3 - Retour d'expérience (REX)</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T5_Analyse_post_mortem/T5C3_Retour_d_Experience_REX/T5C3_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T5_Analyse_post_mortem/T5C3_Retour_d_Experience_REX/T5C3_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+            
+                    <!-- Chapitre T5C4 -->
+                    <li class="chapter">
+                        <button onclick="toggleChapter(this)">🔒 Chap. 4 - Pérennisation des résultats et des bonnes pratiques</button>
+                        <ul class="subchapters">
+                            <li><a href="E5.1_Gestion_des_Risques/T5_Analyse_post_mortem/T5C4_Perenisation_des_Resultats_et_des_Bonnes_Pratiques/T5C4_Au_Boulot.html">Au boulot!</a></li>
+                            <li><a href="E5.1_Gestion_des_Risques/T5_Analyse_post_mortem/T5C4_Perenisation_des_Resultats_et_des_Bonnes_Pratiques/T5C4_Allez_hop_un_petit_test.html">Allez hop, un petit test!</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>            
+        </div>
+    </main>
+
+    <!-- RETOUR À L'INDEX GPME -->
+    <footer>
+        <button class="btn-back" onclick="window.location.href='index.html';">Retour à l'index GPME</button>
+        <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
+        <p>Dernière mise à jour : 2024-12-19</p>
+    </footer>
+
+    <!-- SCRIPT POUR MENU DÉPLIANT -->
+    <script>
+        function toggleTheme(button) {
+            const theme = button.parentElement;
+            theme.classList.toggle('open');
+        }
+
+        function toggleChapter(button) {
+            const chapter = button.parentElement;
+            chapter.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

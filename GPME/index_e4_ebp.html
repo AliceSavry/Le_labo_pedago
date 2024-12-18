@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E4 - EBP</title>
+    <link rel="stylesheet" href="style_gpme.css">
+    <style>
+        .theme {
+            margin: 1rem auto;
+            text-align: left;
+            max-width: 800px;
+        }
+
+        .theme button {
+            width: 100%;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+            color: white;
+            border: none;
+            padding: 1rem;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .theme button:hover {
+            background: linear-gradient(135deg, #dcedc1, #ffd3b6);
+            transform: translateY(-3px);
+        }
+
+        .chapters {
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chapters li {
+            margin: 0.5rem 0;
+        }
+
+        .chapters a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-left: 3px solid #a8e6cf;
+            transition: background 0.2s ease;
+        }
+
+        .chapters a:hover {
+            background: #f8f8f8;
+            border-left-color: #ffd3b6;
+        }
+
+        .theme.open .chapters {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1 class="site-name">Le Labo Pédago</h1>
+        
+        <!-- Bulles Montantes -->
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </header>
+    
+    
+
+    <!-- MENU DÉPLIANT DES FICHES ET EXERCICES -->
+    <main>
+        <h2 class="title">Choisissez une fiche ou un exercice :</h2>
+        <div class="theme-container">
+            <!-- Fiches -->
+            <div class="theme">
+                <button onclick="toggleTheme(this)">📋 Fiches EBP</button>
+                <ul class="chapters">
+                    <li><a href="F1_Creation_de_dossier/F1_Creation_de_dossier.html">Fiche 1 - Création de dossier</a></li>
+                    <li><a href="F2_Parametrage_societe/F2_Parametrage_societe.html">Fiche 2 - Paramétrage société</a></li>
+                    <li><a href="F3_Creation_base_articles/F3_Creation_base_articles.html">Fiche 3 - Création base articles</a></li>
+                    <li><a href="F4_Creation_ouvrages_nomenclatures/F4_Creation_ouvrages_nomenclatures.html">Fiche 4 - Création ouvrages et nomenclatures</a></li>
+                    <li><a href="F5_Creation_base_clients/F5_Creation_base_clients.html">Fiche 5 - Création base clients</a></li>
+                    <li><a href="F6_Creation_documents_commerciaux/F6_Creation_documents_commerciaux.html">Fiche 6 - Création documents commerciaux</a></li>
+                    <li><a href="F7_Sauvegarde_restoration_dossier/F7_Sauvegarde_restoration_dossier.html">Fiche 7 - Sauvegarde et restauration de dossier</a></li>
+                    <li><a href="F8_Gestion_des_fournisseurs/F8_Gestion_des_fournisseurs.html">Fiche 8 - Gestion des fournisseurs</a></li>
+                    <li><a href="F9_Export_de_la_base/F9_Export_de_la_base.html">Fiche 9 - Export de la base</a></li>
+                    <li><a href="F10_Creation_de_gammes/F10_Creation_de_gammes.html">Fiche 10 - Création de gammes</a></li>
+                    <li><a href="F11_Modification_modele_document/F11_Modification_modele_document.html">Fiche 11 - Modification modèle de document</a></li>
+                    <li><a href="F12_Liaison_EBP_comptabilite/F12_Liaison_EBP_comptabilite.html">Fiche 12 - Liaison avec EBP Comptabilité</a></li>
+                    <li><a href="F13_Export_ecritures_comptables/F13_Export_ecritures_comptables.html">Fiche 13 - Export écritures comptables</a></li>
+                    <li><a href="F14_Modification_vues_bases/F14_Modification_vues_bases.html">Fiche 14 - Modification des vues des bases</a></li>
+                    <li><a href="F15_Lettrage_comptes_clients/F15_Lettrage_comptes_clients.html">Fiche 15 - Lettrage des comptes clients</a></li>
+                </ul>
+            </div>
+
+            <!-- Exercices -->
+            <div class="theme">
+                <button onclick="toggleTheme(this)">📚 Exercices</button>
+                <ul class="chapters">
+                    <li><a href="Exercices/Ex1_Tests/Ex1_Tests.html">Exercice 1 - Tests</a></li>
+                    <li><a href="Exercices/Ex2_Disdier/Ex2_Disdier.html">Exercice 2 - Disdier</a></li>
+                    <li><a href="Exercices/Ex3_Entreprise/Ex3_Entreprise.html">Exercice 3 - Entreprise</a></li>
+                    <li><a href="Exercices/Ex4_Gifi/Ex4_Gifi.html">Exercice 4 - Gifi</a></li>
+                    <li><a href="Exercices/Ex5_Buromod/Ex5_Buromod.html">Exercice 5 - Buromod</a></li>
+                    <li><a href="Exercices/Ex6_Artiburo/Ex6_Artiburo.html">Exercice 6 - Artiburo</a></li>
+                    <li><a href="Exercices/Ex7_Sports_Evasion/Ex7_Sports_Evasion.html">Exercice 7 - Sports Evasion</a></li>
+                    <li><a href="Exercices/Ex8_Passion_Foot/Ex8_Passion_Foot.html">Exercice 8 - Passion Foot</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- RETOUR À L'INDEX GPME -->
+    <footer>
+        <button class="btn-back" onclick="window.location.href='index.html';">Retour à l'index GPME</button>
+        <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
+        <p>Dernière mise à jour : 2024-12-19</p>
+    </footer>
+
+    <!-- SCRIPT POUR MENU DÉPLIANT -->
+    <script>
+        function toggleTheme(button) {
+            const theme = button.parentElement;
+            theme.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

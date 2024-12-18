@@ -1,0 +1,204 @@
+/* ===============================
+   STYLE INDEX - FORMULAIRE DE CONNEXION MODERNE ET LUDIQUE
+   =============================== */
+
+/* ---- Import Google Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+/* ---- Global Settings ---- */
+:root {
+    --primary-color: #4a90e2; /* Bleu dynamique */
+    --secondary-color: #50e3c2; /* Vert frais */
+    --accent-color: #f7b731; /* Jaune chaleureux */
+    --background-color: #f9f9fb; /* Fond doux */
+    --foreground-color: #ffffff; /* Blanc pur */
+    --text-color: #333333; /* Gris foncé */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Ombres douces */
+    --hover-shadow: rgba(0, 0, 0, 0.2);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --hover-gradient: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ---- Header Section ---- */
+header {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--foreground-color);
+    background: var(--gradient);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* ---- Login Container ---- */
+.login-container {
+    background: var(--foreground-color);
+    box-shadow: 0 6px 12px var(--shadow-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: fadeIn 1s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 150px;
+    height: 150px;
+    background: var(--accent-color);
+    opacity: 0.2;
+    border-radius: 50%;
+    animation: floating 5s infinite ease-in-out;
+}
+
+.login-container::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    right: -20%;
+    width: 200px;
+    height: 200px;
+    background: var(--primary-color);
+    opacity: 0.15;
+    border-radius: 50%;
+    animation: floating 7s infinite ease-in-out;
+}
+
+/* ---- Welcome Message ---- */
+.welcome-message {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* ---- Form Styling ---- */
+.login-form h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1.2rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 12px var(--secondary-color);
+}
+
+/* ---- Submit Button ---- */
+.btn {
+    background: var(--gradient);
+    color: var(--foreground-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.btn:hover {
+    transform: scale(1.05) rotate(-3deg);
+    box-shadow: 0 6px 12px var(--hover-shadow);
+    background: var(--hover-gradient);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* ---- Error Message ---- */
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+/* ---- Footer ---- */
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

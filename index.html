@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="style_index.css">
+</head>
+<body>
+    <!-- Conteneur principal -->
+    <div class="login-container">
+        <div class="welcome-message" id="welcome-message"></div>
+        <form id="login-form" class="login-form">
+            <h2>Connexion</h2>
+            <label for="username">Utilisateur :</label>
+            <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" placeholder="Mot de passe" required>
+            <button type="submit" class="btn" id="submit-btn">Se connecter</button>
+            <p id="error-message" class="error-message" style="display:none;"></p>
+        </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Tableau des phrases engageantes
+        const phrases = [
+            "Chouette, tu viens travailler !", "Oh, déjà de retour ?",
+            "Prêt pour une journée productive ?", "Le sérieux commence ici !",
+            "On s'y remet, pas vrai ?", "Au boulot, champion(ne) !",
+            "Un cerveau en ébullition arrive...", "Bienvenue à l'aventure !",
+            "Travail + Toi = Succès !", "On compte sur toi aujourd'hui !",
+            "Le travail n'attend pas !", "Courage, c'est bientôt la pause !",
+            "Ton écran t'a manqué, avoue !", "L'apprentissage commence maintenant.",
+            "En route pour la gloire !", "C'est l'heure d'en découdre !",
+            "Qui va réussir ? Toi !", "L'aventure continue...", 
+            "Encore toi ? Super !", "L'avenir s'écrit ici !"
+        ];
+
+        // Affiche une phrase aléatoire
+        document.getElementById('welcome-message').textContent = phrases[Math.floor(Math.random() * phrases.length)];
+
+        // Gestion du formulaire
+        document.getElementById("login-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const validUsername = "admin";
+            const validPassword = "password123";
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+            const submitBtn = document.getElementById("submit-btn");
+
+            // Animation bouton
+            submitBtn.style.transform = "rotate(15deg)";
+            setTimeout(() => { submitBtn.style.transform = "rotate(0deg)"; }, 300);
+
+            // Vérification des identifiants
+            if (username === validUsername && password === validPassword) {
+                window.location.href = "accueil.html";
+            } else {
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "Identifiant ou mot de passe incorrect.";
+            }
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
+        <p>Dernière mise à jour : 2024-12-19</p>
+    </footer>
+</body>
+</html>
