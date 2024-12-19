@@ -59,6 +59,10 @@
             cursor: grab;
             text-align: center;
         }
+        .drag-item.disabled {
+            cursor: not-allowed;
+            background-color: #e0e0e0;
+        }
         .drop-zone {
             border: 2px dashed #aaa;
             padding: 20px;
@@ -106,9 +110,24 @@
             <div class="drag-item" id="item3" draggable="true">Capital social nécessaire</div>
             <div class="drag-item" id="item4" draggable="true">Patrimoine personnel engagé</div>
             <div class="drag-item" id="item5" draggable="true">Simplicité administrative</div>
+            <div class="drag-item" id="item6" draggable="true">Structure adaptée aux grandes entreprises</div>
+            <div class="drag-item" id="item7" draggable="true">Facilité de transmission</div>
+            <div class="drag-item" id="item8" draggable="true">Obligation d'avoir des associés</div>
+            <div class="drag-item" id="item9" draggable="true">Pas de capital minimum</div>
+            <div class="drag-item" id="item10" draggable="true">Gérant unique</div>
+            <div class="drag-item" id="item11" draggable="true">Risque financier limité</div>
+            <div class="drag-item" id="item12" draggable="true">Formalités simples</div>
+            <div class="drag-item" id="item13" draggable="true">Responsabilité sur les biens personnels</div>
+            <div class="drag-item" id="item14" draggable="true">Plusieurs associés possibles</div>
+            <div class="drag-item" id="item15" draggable="true">Partage des bénéfices</div>
+            <div class="drag-item" id="item16" draggable="true">Investissements requis</div>
+            <div class="drag-item" id="item17" draggable="true">Gestion simplifiée</div>
+            <div class="drag-item" id="item18" draggable="true">Division des responsabilités</div>
+            <div class="drag-item" id="item19" draggable="true">Capacité d'extension</div>
+            <div class="drag-item" id="item20" draggable="true">Statut juridique flexible</div>
         </div>
 
-        <button onclick="checkAnswers()">Valider</button>
+        <button onclick="validateAnswers()">Valider</button>
         <p id="feedback"></p>
     </main>
 
@@ -143,6 +162,18 @@
                 });
             });
         });
+
+        function validateAnswers() {
+            const dragItems = document.querySelectorAll('.drag-item');
+
+            // Disable dragging for all items
+            dragItems.forEach(item => {
+                item.setAttribute('draggable', 'false');
+                item.classList.add('disabled');
+            });
+
+            document.getElementById('feedback').textContent = 'Les réponses ont été validées. Vous ne pouvez plus déplacer les étiquettes.';
+        }
     </script>
 </body>
 </html>
