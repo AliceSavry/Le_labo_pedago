@@ -4,8 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T1C2 - L'environnement économique de la PME</title>
-    <link rel="stylesheet" href="../../../style_gpme.css">
     <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fefeff;
+        }
+        header {
+            background: linear-gradient(90deg, #f8c1d9, #fce4ec, #a8e6cf);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        header h1 {
+            font-size: 2rem;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f8bbd0;
+        }
+
+        /* Drag and Drop Styles */
+        #drag-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
         .drag-item {
             display: inline-block;
             padding: 10px;
@@ -15,32 +47,23 @@
             cursor: grab;
             text-align: center;
         }
-        #drag-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 10px;
-            justify-content: center;
-        }
         .drop-zone {
-            border: 2px solid #aaa;
+            border: 2px dashed #aaa;
             padding: 20px;
             margin: 20px;
-            min-height: 300px;
+            min-height: 200px;
             width: 45%;
             display: inline-block;
             vertical-align: top;
-            position: relative;
             text-align: center;
-            overflow: auto;
+            position: relative;
         }
         .drop-zone span {
             position: absolute;
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            color: #333;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
         }
         .drop-zone.ei {
@@ -49,71 +72,48 @@
         .drop-zone.societe {
             background-color: #ede7f6;
         }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        header {
-            background-color: #f8bbd0;
-            padding: 20px;
-            text-align: center;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #f8bbd0;
-        }
     </style>
 </head>
 <body>
     <header>
         <h1>T1C2 - L'environnement économique de la PME</h1>
-        <nav class="breadcrumb">
-            <a href="../index.html">Accueil</a> &gt; 
-            <a href="../theme1.html">Thème 1 : La comptabilité</a> &gt; 
-            <span>T1C2 : L'environnement économique de la PME</span>
-        </nav>
     </header>
 
     <main>
-        <section>
-            <h2>Classez les étiquettes dans les bonnes catégories</h2>
-            <div style="display: flex; justify-content: space-around;">
-                <div class="drop-zone ei" id="ei-zone">
-                    <span>Entreprise Individuelle 🏠</span>
-                </div>
-                <div class="drop-zone societe" id="societe-zone">
-                    <span>Société 🏢</span>
-                </div>
+        <h2>Classez les étiquettes dans les bonnes catégories</h2>
+        <div style="display: flex; justify-content: space-around;">
+            <div class="drop-zone ei" id="ei-zone">
+                <span>Entreprise Individuelle 🏠</span>
             </div>
-
-            <div id="drag-container">
-                <div class="drag-item" id="item1" draggable="true">Responsabilité illimitée</div>
-                <div class="drag-item" id="item2" draggable="true">Responsabilité limitée aux apports</div>
-                <div class="drag-item" id="item3" draggable="true">Capital social nécessaire</div>
-                <div class="drag-item" id="item4" draggable="true">Patrimoine personnel engagé</div>
-                <div class="drag-item" id="item5" draggable="true">Simplicité administrative</div>
-                <div class="drag-item" id="item6" draggable="true">Structure adaptée aux grandes entreprises</div>
-                <div class="drag-item" id="item7" draggable="true">Facilité de transmission</div>
-                <div class="drag-item" id="item8" draggable="true">Obligation d'avoir des associés</div>
-                <div class="drag-item" id="item9" draggable="true">Pas de capital minimum</div>
-                <div class="drag-item" id="item10" draggable="true">Gérant unique</div>
-                <div class="drag-item" id="item11" draggable="true">Risque financier limité</div>
-                <div class="drag-item" id="item12" draggable="true">Formalités simples</div>
-                <div class="drag-item" id="item13" draggable="true">Responsabilité sur les biens personnels</div>
-                <div class="drag-item" id="item14" draggable="true">Plusieurs associés possibles</div>
-                <div class="drag-item" id="item15" draggable="true">Partage des bénéfices</div>
+            <div class="drop-zone societe" id="societe-zone">
+                <span>Société 🏢</span>
             </div>
+        </div>
 
-            <button onclick="checkAnswers()">Valider</button>
-            <p id="feedback"></p>
-        </section>
+        <div id="drag-container">
+            <!-- Drag Items -->
+            <div class="drag-item" id="item1" draggable="true">Responsabilité illimitée</div>
+            <div class="drag-item" id="item2" draggable="true">Responsabilité limitée aux apports</div>
+            <div class="drag-item" id="item3" draggable="true">Capital social nécessaire</div>
+            <div class="drag-item" id="item4" draggable="true">Patrimoine personnel engagé</div>
+            <div class="drag-item" id="item5" draggable="true">Simplicité administrative</div>
+            <div class="drag-item" id="item6" draggable="true">Structure adaptée aux grandes entreprises</div>
+            <div class="drag-item" id="item7" draggable="true">Facilité de transmission</div>
+            <div class="drag-item" id="item8" draggable="true">Obligation d'avoir des associés</div>
+            <div class="drag-item" id="item9" draggable="true">Pas de capital minimum</div>
+            <div class="drag-item" id="item10" draggable="true">Gérant unique</div>
+            <div class="drag-item" id="item11" draggable="true">Risque financier limité</div>
+            <div class="drag-item" id="item12" draggable="true">Formalités simples</div>
+            <div class="drag-item" id="item13" draggable="true">Responsabilité sur les biens personnels</div>
+            <div class="drag-item" id="item14" draggable="true">Plusieurs associés possibles</div>
+            <div class="drag-item" id="item15" draggable="true">Partage des bénéfices</div>
+        </div>
+
+        <button onclick="checkAnswers()">Valider</button>
+        <p id="feedback"></p>
     </main>
 
     <footer>
-        <button class="btn-back" onclick="window.location.href='../index.html';">
-            Retour à l'accueil
-        </button>
         <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
         <p>Dernière mise à jour : 2024-12-19</p>
     </footer>
@@ -140,8 +140,6 @@
                     const draggedItem = document.getElementById(itemId);
                     if (draggedItem) {
                         zone.appendChild(draggedItem);
-                        draggedItem.style.margin = '5px';
-                        draggedItem.style.cursor = 'grab';
                     }
                 });
             });
@@ -174,7 +172,7 @@
                 'Plusieurs associés possibles'
             ];
 
-            let feedback = 'Vérifiez vos réponses :\n';
+            let feedback = '';
 
             const incorrectEi = eiItems.filter(item => !correctEi.includes(item));
             const incorrectSociete = societeItems.filter(item => !correctSociete.includes(item));
