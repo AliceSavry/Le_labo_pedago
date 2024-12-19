@@ -131,6 +131,36 @@ h2 {
     gap: 1.5rem;
     margin-bottom: 3rem;
 }
+.drop-zone {
+    border: 2px dashed #aaa; /* Dashed border to indicate drop area */
+    background-color: rgba(255, 255, 255, 0.9); /* Subtle background */
+    padding: 20px;
+    margin: 20px auto; /* Center horizontally */
+    min-height: 150px; /* Reduce height if needed */
+    width: 300px; /* Uniform width for both zones */
+    display: inline-block;
+    vertical-align: top;
+    position: relative; /* Allows absolute positioning of child elements */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Highlight zone when dragging over */
+.drop-zone:hover,
+.drop-zone.dragover {
+    border-color: #333;
+    background-color: #f0f8ff; /* Light blue highlight */
+}
+
+/* Specific styles for each zone */
+.drop-zone.ei {
+    background-color: #e0f7fa;
+}
+
+.drop-zone.societe {
+    background-color: #ede7f6;
+}
 
 .btn {
     background: linear-gradient(135deg, #a8e6cf, #dcedc1);
