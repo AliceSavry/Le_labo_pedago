@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T1C2 - L'environnement économique de la PME</title>
@@ -26,6 +27,53 @@
             background-color: #e0e0e0;
             pointer-events: none;
         }
+        .bubble {
+            position: absolute;
+            background-color: rgba(173, 216, 230, 0.6);
+            border-radius: 50%;
+            animation: float 6s infinite;
+        }
+        .bubble:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            left: 20%;
+            animation-duration: 5s;
+        }
+        .bubble:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            left: 40%;
+            animation-duration: 7s;
+        }
+        .bubble:nth-child(3) {
+            width: 50px;
+            height: 50px;
+            left: 60%;
+            animation-duration: 6s;
+        }
+        .bubble:nth-child(4) {
+            width: 70px;
+            height: 70px;
+            left: 80%;
+            animation-duration: 8s;
+        }
+        .bubble:nth-child(5) {
+            width: 30px;
+            height: 30px;
+            left: 10%;
+            animation-duration: 4s;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -35,13 +83,12 @@
             <a href="../index.html">Accueil</a> &gt; 
             <a href="../theme1.html">Thème 1 : La comptabilité</a> &gt; 
             <span>T1C2 : L'environnement économique de la PME</span>
-                    <!-- Bulles Montantes -->
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
         </nav>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
     </header>
 
     <main>
@@ -51,14 +98,14 @@
             <p>Quelle est la meilleure forme juridique pour une entreprise selon ses besoins ? Associez chaque caractéristique à la forme juridique correspondante.</p>
             <p><strong>Drag & Drop :</strong> Faites glisser les étiquettes suivantes vers la bonne catégorie (Entreprise Individuelle ou Société) :</p>
             <div id="drag-container">
-                <div class="drag-item" draggable="true">Responsabilité illimitée</div>
-                <div class="drag-item" draggable="true">Responsabilité limitée aux apports</div>
-                <div class="drag-item" draggable="true">Capital social nécessaire</div>
-                <div class="drag-item" draggable="true">Patrimoine personnel engagé</div>
-                <div class="drag-item" draggable="true">Simplicité administrative</div>
-                <div class="drag-item" draggable="true">Structure adaptée aux grandes entreprises</div>
-                <div class="drag-item" draggable="true">Facilité de transmission</div>
-                <div class="drag-item" draggable="true">Obligation d'avoir des associés</div>
+                <div class="drag-item" id="item1" draggable="true">Responsabilité illimitée</div>
+                <div class="drag-item" id="item2" draggable="true">Responsabilité limitée aux apports</div>
+                <div class="drag-item" id="item3" draggable="true">Capital social nécessaire</div>
+                <div class="drag-item" id="item4" draggable="true">Patrimoine personnel engagé</div>
+                <div class="drag-item" id="item5" draggable="true">Simplicité administrative</div>
+                <div class="drag-item" id="item6" draggable="true">Structure adaptée aux grandes entreprises</div>
+                <div class="drag-item" id="item7" draggable="true">Facilité de transmission</div>
+                <div class="drag-item" id="item8" draggable="true">Obligation d'avoir des associés</div>
             </div>
 
             <div>
@@ -82,149 +129,58 @@
         </footer>
 
         <script>
-            const dragItems = document.querySelectorAll('.drag-item');
-            const dropZones = document.querySelectorAll('.drop-zone');
+            document.addEventListener('DOMContentLoaded', () => {
+                const dragItems = document.querySelectorAll('.drag-item');
+                const dropZones = document.querySelectorAll('.drop-zone');
 
-            dragItems.forEach(item => {
-                item.addEventListener('dragstart', e => {
-                    e.dataTransfer.setData('text/plain', e.target.id);
-                    setTimeout(() => {
-                        e.target.style.display = 'none';
-                    }, 0);
+                dragItems.forEach(item => {
+                    item.addEventListener('dragstart', e => {
+                        e.dataTransfer.setData('text/plain', e.target.id);
+                    });
                 });
 
-                item.addEventListener('dragend', e => {
-                    e.target.style.display = 'block';
-                });
-            });
-
-            dropZones.forEach(zone => {
-                zone.addEventListener('dragover', e => {
-                    e.preventDefault();
-                });
-
-                zone.addEventListener('drop', e => {
-                    e.preventDefault();
-                    const data = e.dataTransfer.getData('text/plain');
-                    const draggedItem = document.getElementById(data);
-                    if (draggedItem) {
-                        zone.appendChild(draggedItem);
-                    }
-                });
-            });
-
-            function checkAnswers() {
-                const individuelle = document.getElementById('individuelle').textContent;
-                const societe = document.getElementById('societe').textContent;
-
-                let feedback = '';
-
-                if (individuelle.includes('Responsabilité illimitée') &&
-                    individuelle.includes('Patrimoine personnel engagé') &&
-                    individuelle.includes('Simplicité administrative') &&
-                    societe.includes('Responsabilité limitée aux apports') &&
-                    societe.includes('Capital social nécessaire') &&
-                    societe.includes('Structure adaptée aux grandes entreprises') &&
-                    societe.includes('Facilité de transmission') &&
-                    societe.includes('Obligation d'avoir des associés')) {
-                    feedback = 'Bravo ! Vous avez correctement classé toutes les caractéristiques.';
-
-                    dropZones.forEach(zone => {
-                        zone.classList.add('locked');
+                dropZones.forEach(zone => {
+                    zone.addEventListener('dragover', e => {
+                        e.preventDefault();
                     });
 
-                } else {
-                    feedback = 'Certaines réponses sont incorrectes. Revoyez les concepts ou demandez une clarification.';
-                }
+                    zone.addEventListener('drop', e => {
+                        e.preventDefault();
+                        const data = e.dataTransfer.getData('text/plain');
+                        const draggedItem = document.getElementById(data);
+                        if (draggedItem) {
+                            e.target.appendChild(draggedItem);
+                        }
+                    });
+                });
 
-                document.getElementById('feedback').textContent = feedback;
-            }
+                document.querySelector('button[onclick="checkAnswers()"]').addEventListener('click', () => {
+                    const individuelle = document.getElementById('individuelle').textContent;
+                    const societe = document.getElementById('societe').textContent;
+
+                    let feedback = '';
+
+                    if (individuelle.includes('Responsabilité illimitée') &&
+                        individuelle.includes('Patrimoine personnel engagé') &&
+                        individuelle.includes('Simplicité administrative') &&
+                        societe.includes('Responsabilité limitée aux apports') &&
+                        societe.includes('Capital social nécessaire') &&
+                        societe.includes('Structure adaptée aux grandes entreprises') &&
+                        societe.includes('Facilité de transmission') &&
+                        societe.includes('Obligation d'avoir des associés')) {
+                        feedback = 'Bravo ! Vous avez correctement classé toutes les caractéristiques.';
+
+                        dropZones.forEach(zone => {
+                            zone.classList.add('locked');
+                        });
+
+                    } else {
+                        feedback = 'Certaines réponses sont incorrectes. Revoyez les concepts ou demandez une clarification.';
+                    }
+
+                    document.getElementById('feedback').textContent = feedback;
+                });
+            });
         </script>
     </body>
-</html>
-
-
-        <!-- Bloc 2 : Exploration du bilan -->
-        <section>
-            <h2>2. Exploration du bilan</h2>
-            <p>Apprenez à classer les éléments financiers d'une entreprise en actif (emplois) ou en passif (ressources). Jouez à trier les catégories suivantes :</p>
-            <ul>
-                <li>Immobilisations corporelles, Créances clients, Stocks (Actif).</li>
-                <li>Dettes fournisseurs, Capital social, Emprunts bancaires (Passif).</li>
-            </ul>
-            <p><em>Atelier :</em> Travaillez en binôme pour classer un bilan simplifié et repérer d'éventuelles erreurs dans un exemple fourni.</p>
-            <p><em>Discussion :</em> Pourquoi est-il important de distinguer l'actif du passif ? Quels risques peuvent découler d'une mauvaise gestion de l'un ou l'autre ?</p>
-            <button onclick="startExercise2()">Commencer le jeu</button>
-        </section>
-
-        <!-- Bloc 3 : Exploration du compte de résultat -->
-        <section>
-            <h2>3. Exploration du compte de résultat</h2>
-            <p>Identifiez et classez les produits et charges d'une entreprise selon leur nature :</p>
-            <ul>
-                <li><strong>Produits :</strong> Ventes, intérêts de placement, produits exceptionnels.</li>
-                <li><strong>Charges :</strong> Salaires, loyers, pénalités de retard.</li>
-            </ul>
-            <p><em>Exercice :</em> Classez les éléments d'un compte de résultat fictif dans les bonnes catégories et calculez le résultat net.</p>
-            <p><em>Discussion :</em> Quelle est l'importance d'un résultat net positif ? Que peut révéler un résultat négatif ?</p>
-            <button onclick="startExercise3()">Commencer l'activité</button>
-        </section>
-
-        <!-- Bloc 4 : Calcul des résultats -->
-        <section>
-            <h2>4. Calcul des résultats</h2>
-            <p>Apprenez à calculer les résultats clés d'une entreprise :</p>
-            <ul>
-                <li><strong>Résultat d'exploitation :</strong> Produits d'exploitation - Charges d'exploitation.</li>
-                <li><strong>Résultat financier :</strong> Produits financiers - Charges financières.</li>
-                <li><strong>Résultat exceptionnel :</strong> Produits exceptionnels - Charges exceptionnelles.</li>
-                <li><strong>Résultat net :</strong> Somme des résultats précédents.</li>
-            </ul>
-            <p><em>Exercice :</em> Travaillez en équipe pour analyser un compte de résultat simplifié et proposez des actions d'amélioration en cas de résultat négatif.</p>
-            <p><em>Débat :</em> Quelle stratégie adopter pour améliorer le résultat d'exploitation ou financier d'une PME ?</p>
-            <button onclick="startExercise4()">Commencer les calculs</button>
-        </section>
-
-        <!-- Conclusion et introspection -->
-        <section>
-            <h2>Conclusion et introspection</h2>
-            <p>Réfléchissez à votre apprentissage avec cette séance. Complétez les phrases suivantes :</p>
-            <ul>
-                <li>Grâce à cette séance, j'ai appris...</li>
-                <li>Ces notions me serviront à...</li>
-                <li>Je me sens plus à l'aise avec...</li>
-                <li>Je voudrais approfondir...</li>
-                <li>Un point que je dois encore clarifier est...</li>
-            </ul>
-            <p>Partagez vos réponses en groupe pour discuter et consolider votre compréhension. Notez une action à entreprendre pour continuer votre progression.</p>
-            <button onclick="submitIntrospection()">Soumettre ma réflexion</button>
-        </section>
-    </main>
-
-    <footer>
-        <button class="btn-back" onclick="window.location.href='../index.html';">
-            Retour à l'accueil
-        </button>
-        <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
-        <p>Dernière mise à jour : 2024-12-19</p>
-    </footer>
-
-    <script>
-        function startExercise1() {
-            alert("Démarrage de l'activité sur l'environnement de l'entreprise.");
-        }
-        function startExercise2() {
-            alert("Démarrage de l'exploration du bilan.");
-        }
-        function startExercise3() {
-            alert("Démarrage de l'exploration du compte de résultat.");
-        }
-        function startExercise4() {
-            alert("Démarrage des calculs des résultats.");
-        }
-        function submitIntrospection() {
-            alert("Merci pour votre réflexion ! Continuez à progresser.");
-        }
-    </script>
-</body>
 </html>
