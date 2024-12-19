@@ -13,19 +13,11 @@
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             cursor: grab;
+            position: absolute;
         }
-        .drop-zone {
-            border: 2px dashed #aaa;
-            padding: 15px;
-            margin: 10px;
-            min-height: 100px;
-            width: 45%;
-            display: inline-block;
-            vertical-align: top;
-        }
-        .drop-zone.locked {
-            background-color: #e0e0e0;
-            pointer-events: none;
+        body {
+            position: relative;
+            height: 100vh;
         }
         .bubble {
             position: absolute;
@@ -92,32 +84,18 @@
     </header>
 
     <main>
-        <!-- Bloc 1 : Découverte de l'environnement de l'entreprise -->
         <section>
-            <h2>1. Découverte de l'environnement de l'entreprise</h2>
-            <p>Quelle est la meilleure forme juridique pour une entreprise selon ses besoins ? Associez chaque caractéristique à la forme juridique correspondante.</p>
-            <p><strong>Drag & Drop :</strong> Faites glisser les étiquettes suivantes vers la bonne catégorie (Entreprise Individuelle ou Société) :</p>
+            <h2>Déplacez les étiquettes où vous voulez</h2>
             <div id="drag-container">
-                <div class="drag-item" id="item1" draggable="true">Responsabilité illimitée</div>
-                <div class="drag-item" id="item2" draggable="true">Responsabilité limitée aux apports</div>
-                <div class="drag-item" id="item3" draggable="true">Capital social nécessaire</div>
-                <div class="drag-item" id="item4" draggable="true">Patrimoine personnel engagé</div>
-                <div class="drag-item" id="item5" draggable="true">Simplicité administrative</div>
-                <div class="drag-item" id="item6" draggable="true">Structure adaptée aux grandes entreprises</div>
-                <div class="drag-item" id="item7" draggable="true">Facilité de transmission</div>
-                <div class="drag-item" id="item8" draggable="true">Obligation d'avoir des associés</div>
+                <div class="drag-item" id="item1" draggable="true" style="top: 100px; left: 50px;">Responsabilité illimitée</div>
+                <div class="drag-item" id="item2" draggable="true" style="top: 150px; left: 150px;">Responsabilité limitée aux apports</div>
+                <div class="drag-item" id="item3" draggable="true" style="top: 200px; left: 250px;">Capital social nécessaire</div>
+                <div class="drag-item" id="item4" draggable="true" style="top: 250px; left: 350px;">Patrimoine personnel engagé</div>
+                <div class="drag-item" id="item5" draggable="true" style="top: 300px; left: 450px;">Simplicité administrative</div>
+                <div class="drag-item" id="item6" draggable="true" style="top: 350px; left: 550px;">Structure adaptée aux grandes entreprises</div>
+                <div class="drag-item" id="item7" draggable="true" style="top: 400px; left: 650px;">Facilité de transmission</div>
+                <div class="drag-item" id="item8" draggable="true" style="top: 450px; left: 750px;">Obligation d'avoir des associés</div>
             </div>
-
-            <div>
-                <h3>Entreprise Individuelle</h3>
-                <div class="drop-zone" id="individuelle"></div>
-            </div>
-            <div>
-                <h3>Société</h3>
-                <div class="drop-zone" id="societe"></div>
-            </div>
-            <button onclick="checkAnswers()">Valider</button>
-            <p id="feedback"></p>
         </section>
 
         <footer>
@@ -131,54 +109,22 @@
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const dragItems = document.querySelectorAll('.drag-item');
-                const dropZones = document.querySelectorAll('.drop-zone');
 
                 dragItems.forEach(item => {
                     item.addEventListener('dragstart', e => {
-                        e.dataTransfer.setData('text/plain', e.target.id);
-                    });
-                });
-
-                dropZones.forEach(zone => {
-                    zone.addEventListener('dragover', e => {
-                        e.preventDefault();
+                        e.dataTransfer.setData('text/plain', `${e.target.id}|${e.clientX}|${e.clientY}`);
                     });
 
-                    zone.addEventListener('drop', e => {
-                        e.preventDefault();
-                        const data = e.dataTransfer.getData('text/plain');
-                        const draggedItem = document.getElementById(data);
-                        if (draggedItem) {
-                            e.target.appendChild(draggedItem);
-                        }
+                    item.addEventListener('dragend', e => {
+                        const [id, startX, startY] = e.dataTransfer.getData('text/plain').split('|');
+                        const draggedItem = document.getElementById(id);
+                        const offsetX = e.clientX - parseInt(startX, 10);
+                        const offsetY = e.clientY - parseInt(startY, 10);
+                        const rect = draggedItem.getBoundingClientRect();
+
+                        draggedItem.style.left = `${rect.left + offsetX}px`;
+                        draggedItem.style.top = `${rect.top + offsetY}px`;
                     });
-                });
-
-                document.querySelector('button[onclick="checkAnswers()"]').addEventListener('click', () => {
-                    const individuelle = document.getElementById('individuelle').textContent;
-                    const societe = document.getElementById('societe').textContent;
-
-                    let feedback = '';
-
-                    if (individuelle.includes('Responsabilité illimitée') &&
-                        individuelle.includes('Patrimoine personnel engagé') &&
-                        individuelle.includes('Simplicité administrative') &&
-                        societe.includes('Responsabilité limitée aux apports') &&
-                        societe.includes('Capital social nécessaire') &&
-                        societe.includes('Structure adaptée aux grandes entreprises') &&
-                        societe.includes('Facilité de transmission') &&
-                        societe.includes('Obligation d'avoir des associés')) {
-                        feedback = 'Bravo ! Vous avez correctement classé toutes les caractéristiques.';
-
-                        dropZones.forEach(zone => {
-                            zone.classList.add('locked');
-                        });
-
-                    } else {
-                        feedback = 'Certaines réponses sont incorrectes. Revoyez les concepts ou demandez une clarification.';
-                    }
-
-                    document.getElementById('feedback').textContent = feedback;
                 });
             });
         </script>
