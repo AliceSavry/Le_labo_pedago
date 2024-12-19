@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T1C2 - L'environnement économique de la PME</title>
@@ -45,14 +44,16 @@
             <h2>1. Découverte de l'environnement de l'entreprise</h2>
             <p>Quelle est la meilleure forme juridique pour une entreprise selon ses besoins ? Associez chaque caractéristique à la forme juridique correspondante.</p>
             <p><strong>Drag & Drop :</strong> Faites glisser les étiquettes suivantes vers la bonne catégorie (Entreprise Individuelle ou Société) :</p>
-            <div class="drag-item" draggable="true">Responsabilité illimitée</div>
-            <div class="drag-item" draggable="true">Responsabilité limitée aux apports</div>
-            <div class="drag-item" draggable="true">Capital social nécessaire</div>
-            <div class="drag-item" draggable="true">Patrimoine personnel engagé</div>
-            <div class="drag-item" draggable="true">Simplicité administrative</div>
-            <div class="drag-item" draggable="true">Structure adaptée aux grandes entreprises</div>
-            <div class="drag-item" draggable="true">Facilité de transmission</div>
-            <div class="drag-item" draggable="true">Obligation d'avoir des associés</div>
+            <div id="drag-container">
+                <div class="drag-item" draggable="true">Responsabilité illimitée</div>
+                <div class="drag-item" draggable="true">Responsabilité limitée aux apports</div>
+                <div class="drag-item" draggable="true">Capital social nécessaire</div>
+                <div class="drag-item" draggable="true">Patrimoine personnel engagé</div>
+                <div class="drag-item" draggable="true">Simplicité administrative</div>
+                <div class="drag-item" draggable="true">Structure adaptée aux grandes entreprises</div>
+                <div class="drag-item" draggable="true">Facilité de transmission</div>
+                <div class="drag-item" draggable="true">Obligation d'avoir des associés</div>
+            </div>
 
             <div>
                 <h3>Entreprise Individuelle</h3>
@@ -80,7 +81,14 @@
 
             dragItems.forEach(item => {
                 item.addEventListener('dragstart', e => {
-                    e.dataTransfer.setData('text', e.target.textContent);
+                    e.dataTransfer.setData('text/plain', e.target.id);
+                    setTimeout(() => {
+                        e.target.style.display = 'none';
+                    }, 0);
+                });
+
+                item.addEventListener('dragend', e => {
+                    e.target.style.display = 'block';
                 });
             });
 
@@ -91,11 +99,11 @@
 
                 zone.addEventListener('drop', e => {
                     e.preventDefault();
-                    const data = e.dataTransfer.getData('text');
-                    const newItem = document.createElement('div');
-                    newItem.textContent = data;
-                    newItem.classList.add('drag-item');
-                    e.target.appendChild(newItem);
+                    const data = e.dataTransfer.getData('text/plain');
+                    const draggedItem = document.getElementById(data);
+                    if (draggedItem) {
+                        zone.appendChild(draggedItem);
+                    }
                 });
             });
 
