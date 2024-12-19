@@ -132,111 +132,133 @@
         <p id="feedback"></p>
 
         <section>
-    <h2 style="margin-bottom: 20px;">🎲 Mise en situation : Explorer les besoins et les ressources</h2>
-    <p>Avant de commencer, rappelez-vous :</p>
-    <ul style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 1.6;">
-        <li><strong>Besoins :</strong> Ce sont les éléments nécessaires au fonctionnement de l’entreprise (ex. : achat de matériel, loyer, recrutement).</li>
-        <li><strong>Ressources de financement :</strong> Ce sont les moyens dont dispose l’entreprise pour couvrir ses besoins (ex. : apport personnel, prêt bancaire, subventions).</li>
-    </ul>
-    <p>Appuyez sur le bouton pour tirer au sort une situation de création d'entreprise et réfléchissez aux besoins et ressources nécessaires pour son démarrage.</p>
+    <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T1C2 - L'environnement économique de la PME</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fefeff;
+        }
+        header {
+            background: linear-gradient(90deg, #f8c1d9, #fce4ec, #a8e6cf);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        header h1 {
+            font-size: 2rem;
+        }
+        nav.breadcrumb {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        nav.breadcrumb a {
+            color: #555;
+            text-decoration: none;
+        }
+        nav.breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f8bbd0;
+        }
+        .scenario-container {
+            margin-top: 20px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+            border: 3px solid #ffeb3b;
+            border-radius: 10px;
+            background-color: #fff8e1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>T1C2 - L'environnement économique de la PME</h1>
+        <nav class="breadcrumb">
+            <a href="../index.html">Accueil</a> &gt; 
+            <a href="../theme1.html">Thème 1 : La comptabilité</a> &gt; 
+            <span>T1C2 : L'environnement économique de la PME</span>
+        </nav>
+    </header>
 
-    <button onclick="generateScenario()" style="
-        padding: 10px 20px; 
-        margin: 20px 0; 
-        font-size: 1rem; 
-        font-weight: bold; 
-        color: white; 
-        background-color: #4caf50; 
-        border: none; 
-        border-radius: 5px; 
-        cursor: pointer; 
-        transition: all 0.3s ease;">
-        🎲 Tirer une carte
-    </button>
+    <main>
+        <h2>🎲 Mise en situation : Explorer les besoins et les ressources</h2>
+        <p>Avant de commencer, rappelez-vous :</p>
+        <ul style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+            <li><strong>Besoins :</strong> Ce sont les éléments nécessaires au fonctionnement de l’entreprise (ex. : achat de matériel, loyer, recrutement).</li>
+            <li><strong>Ressources de financement :</strong> Ce sont les moyens dont dispose l’entreprise pour couvrir ses besoins (ex. : apport personnel, prêt bancaire, subventions).</li>
+        </ul>
+        <p>Appuyez sur le bouton pour tirer au sort une situation de création d'entreprise et réfléchissez aux besoins et ressources nécessaires pour son démarrage.</p>
 
-    <div id="scenario" class="scenario-container" style="
-        margin-top: 20px; 
-        padding: 20px; 
-        max-width: 600px; 
-        margin: 20px auto; 
-        text-align: center; 
-        border: 3px solid #ffeb3b; 
-        border-radius: 10px; 
-        background-color: #fff8e1; 
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-        <p style="font-size: 1.2rem; color: #333;">🎲 Aucune carte n'a encore été tirée. Cliquez sur le bouton pour commencer !</p>
-    </div>
-</section>
+        <button onclick="generateScenario()">🎲 Tirer une carte</button>
 
-<script>
-    function generateScenario() {
-        const scenarios = [
-            "🥐 <strong>Boulangerie Artisanale :</strong> Vous lancez une boulangerie dans un quartier résidentiel. Pensez aux équipements nécessaires, au personnel, et aux financements possibles.",
-            "📱 <strong>Développement d'applications mobiles :</strong> Vous démarrez une entreprise spécialisée dans le développement d'applications. Réfléchissez aux outils, au marketing, et aux sources de financement.",
-            "🚲 <strong>Atelier de réparation de vélos :</strong> Vous créez un atelier dans une zone urbaine. Quels sont vos besoins initiaux et comment les financer ?",
-            "💇‍♀️ <strong>Salon de coiffure haut de gamme :</strong> Vous ouvrez un salon de coiffure. Identifiez vos besoins en matériel, locaux et ressources humaines, ainsi que vos financements possibles.",
-            "🍽️ <strong>Restaurant Vegan :</strong> Vous ouvrez un restaurant proposant des plats 100% vegan. Pensez aux équipements de cuisine, à la décoration, et aux stratégies pour attirer les clients.",
-            "🚚 <strong>Food Truck :</strong> Vous lancez un food truck spécialisé dans les tacos. Réfléchissez à l’achat du camion, à l’équipement et au choix des emplacements stratégiques.",
-            "🎨 <strong>Atelier d’Art :</strong> Vous créez un atelier pour proposer des cours de peinture et vendre vos œuvres. Quels sont vos besoins en matériel et comment financer votre projet ?",
-            "📚 <strong>Librairie Indépendante :</strong> Vous ouvrez une librairie mettant en avant des auteurs locaux. Identifiez les investissements en stock de livres et vos besoins en communication.",
-            "🧘 <strong>Studio de Yoga :</strong> Vous créez un studio de yoga en centre-ville. Quels sont vos besoins en locaux, matériel, et comment attirer des clients réguliers ?",
-            "🛠️ <strong>Entreprise de Rénovation :</strong> Vous lancez une entreprise de rénovation de maisons. Réfléchissez à l’achat de matériel, au recrutement d’artisans, et aux moyens de financement.",
-            "🧼 <strong>Entreprise de Produits Ménagers Écologiques :</strong> Vous développez une gamme de produits ménagers respectueux de l’environnement. Quels sont vos besoins en recherche, production et marketing ?",
-            "🛍️ <strong>Boutique de Vêtements Vintage :</strong> Vous ouvrez une boutique spécialisée dans les vêtements vintage. Réfléchissez aux stocks, à la décoration du magasin, et aux moyens de financement.",
-            "🐾 <strong>Service de Garde d’Animaux :</strong> Vous proposez des services de garde d’animaux à domicile ou dans un local dédié. Quels sont vos besoins en locaux, équipements, et comment financer le projet ?",
-            "🎮 <strong>Espace Gaming :</strong> Vous créez un espace gaming avec des consoles, des ordinateurs et des tournois e-sport. Quels sont vos besoins en matériel et comment financer le tout ?",
-            "🧵 <strong>Atelier de Couture :</strong> Vous ouvrez un atelier pour créer des vêtements sur mesure. Pensez aux besoins en machines, tissus, et à votre stratégie de financement.",
-            "🌱 <strong>Entreprise de Jardins Urbains :</strong> Vous aménagez des jardins urbains sur les toits ou en plein centre-ville. Réfléchissez aux besoins en matériaux et aux partenariats possibles.",
-            "🚗 <strong>Location de Voitures Électriques :</strong> Vous démarrez une entreprise de location de voitures électriques. Quels sont vos besoins en véhicules, bornes de recharge, et comment les financer ?",
-            "🍹 <strong>Bar à Jus Bio :</strong> Vous ouvrez un bar à jus proposant des produits 100% bio. Pensez aux équipements, au choix des fournisseurs, et aux financements possibles.",
-            "🏋️ <strong>Salle de Sport :</strong> Vous créez une salle de sport moderne avec des équipements de haute qualité. Identifiez vos besoins en matériel et en stratégie marketing.",
-            "🧸 <strong>Magasin de Jouets :</strong> Vous ouvrez un magasin spécialisé dans les jouets éducatifs. Réfléchissez aux besoins en stocks et en marketing pour vous démarquer.",
+        <div id="scenario" class="scenario-container">
+            <p>🎲 Aucune carte n'a encore été tirée. Cliquez sur le bouton pour commencer !</p>
+        </div>
 
-        ];
+        <section>
+            <h3>📋 Instructions pour l'activité</h3>
+            <p><strong>Objectif :</strong> Travailler en groupe pour imaginer les besoins et ressources nécessaires à la réussite d'une entreprise fictive tirée au sort.</p>
+            <ol style="text-align: left; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+                <li><strong>Former les groupes :</strong> Lisez le scénario tiré au sort et comprenez le contexte de l’entreprise.</li>
+                <li><strong>Analyser votre entreprise :</strong>
+                    <ul>
+                        <li>Identifiez vos <strong>besoins</strong> : investissements (matériel, locaux, etc.), charges fixes et variables.</li>
+                        <li>Réfléchissez aux <strong>ressources financières</strong> nécessaires : apports personnels, prêts bancaires, subventions.</li>
+                    </ul>
+                </li>
+                <li><strong>Préparer une présentation :</strong>
+                    <ul>
+                        <li>Décrivez votre entreprise et ses ambitions.</li>
+                        <li>Présentez vos besoins et ressources de façon claire et justifiée.</li>
+                        <li>Expliquez votre stratégie pour réussir.</li>
+                    </ul>
+                </li>
+                <li><strong>Présenter en classe :</strong> Chaque groupe dispose de <strong>5 minutes</strong> pour convaincre la classe avec une présentation dynamique et bien structurée.</li>
+            </ol>
+        </section>
+    </main>
 
-        const randomIndex = Math.floor(Math.random() * scenarios.length);
-        const selectedScenario = scenarios[randomIndex];
+    <footer>
+        <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
+        <p>Dernière mise à jour : 2024-12-19</p>
+    </footer>
 
-        const scenarioDiv = document.getElementById('scenario');
-        scenarioDiv.innerHTML = `
-            <p style="font-size: 1.5rem; font-weight: bold; color: #333;">Voici votre carte :</p>
-            <p style="font-size: 1.2rem; color: #555; line-height: 1.8;">${selectedScenario}</p>`;
-    }
-    <section>
+    <script>
+        function generateScenario() {
+            const scenarios = [
+                "🥐 <strong>Boulangerie Artisanale :</strong> Vous lancez une boulangerie dans un quartier résidentiel. Pensez aux équipements nécessaires, au personnel, et aux financements possibles.",
+                "📱 <strong>Développement d'applications mobiles :</strong> Vous démarrez une entreprise spécialisée dans le développement d'applications. Réfléchissez aux outils, au marketing, et aux sources de financement.",
+                ...
+            ];
+            const randomIndex = Math.floor(Math.random() * scenarios.length);
+            const selectedScenario = scenarios[randomIndex];
 
-</section>
-
-</script>
-    <h3>📋 Instructions pour l'activité</h3>
-    <p><strong>Objectif :</strong> Travailler en groupe pour imaginer les besoins et ressources nécessaires à la réussite d'une entreprise fictive tirée au sort.</p>
-    <ol style="text-align: left; max-width: 700px; margin: 0 auto; line-height: 1.6;">
-        <li>
-            <strong>Former les groupes :</strong>
-            <p>Lisez le scénario tiré au sort et comprenez le contexte de l’entreprise.</p>
-        </li>
-        <li>
-            <strong>Analyser votre entreprise :</strong>
-            <ul>
-                <li>Identifiez vos <strong>besoins</strong> : investissements (matériel, locaux, etc.), charges fixes et variables.</li>
-                <li>Réfléchissez aux <strong>ressources financières</strong> nécessaires : apports personnels, prêts bancaires, subventions.</li>
-            </ul>
-        </li>
-        <li>
-            <strong>Préparer une présentation :</strong>
-            <ul>
-                <li>Décrivez votre entreprise et ses ambitions.</li>
-                <li>Présentez vos besoins et ressources de façon claire et justifiée.</li>
-                <li>Expliquez votre stratégie pour réussir.</li>
-            </ul>
-        </li>
-        <li>
-            <strong>Présenter en classe :</strong>
-            <p>Chaque groupe dispose de <strong>5 minutes</strong> pour convaincre la classe avec une présentation dynamique et bien structurée.</p>
-        </li>
-    </ol>
-    <p style="text-align: center; margin-top: 20px;">
-        <strong>Conseil :</strong> Soyez créatifs et montrez que votre stratégie est réaliste !
-    </p>
+            const scenarioDiv = document.getElementById('scenario');
+            scenarioDiv.innerHTML = `<p><strong>Voici votre carte :</strong> ${selectedScenario}</p>`;
+        }
+    </script>
+</body>
+</html>
 
     </main>
 
