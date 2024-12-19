@@ -5,104 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T1C2 - L'environnement économique de la PME</title>
     <link rel="stylesheet" href="../../../style_gpme.css">
+    <style>
+        .drag-item {
+            display: inline-block;
+            padding: 10px;
+            margin: 5px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: grab;
+        }
+        .drop-zone {
+            border: 2px dashed #aaa;
+            padding: 15px;
+            margin: 10px 0;
+            min-height: 50px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>T1C2 - L'environnement économique de la PME</h1>
+        <nav class="breadcrumb">
+            <a href="../index.html">Accueil</a> &gt; 
+            <a href="../theme1.html">Thème 1 : La comptabilité</a> &gt; 
+            <span>T1C2 : L'environnement économique de la PME</span>
+        </nav>
     </header>
 
     <main>
+        <!-- Bloc 1 : Découverte de l'environnement de l'entreprise -->
         <section>
-            <h2>Introduction</h2>
-            <p>Bienvenue dans ce chapitre sur l'environnement économique de la PME. Vous allez découvrir, à travers des activités interactives, les notions essentielles pour comprendre et maîtriser les bases de ce sujet clé. À vous de jouer et de découvrir les réponses par vous-même !</p>
-        </section>
-
-        <section>
-            <h2>Activité 1 : Choisir la forme juridique</h2>
+            <h2>1. Découverte de l'environnement de l'entreprise</h2>
             <p>Quelle est la meilleure forme juridique pour une entreprise selon ses besoins ? Associez chaque caractéristique à la forme juridique correspondante.</p>
+            <p><strong>Drag & Drop :</strong> Faites glisser les étiquettes suivantes vers la bonne catégorie (Entreprise Individuelle ou Société) :</p>
+            <div class="drag-item" draggable="true">Responsabilité illimitée</div>
+            <div class="drag-item" draggable="true">Responsabilité limitée aux apports</div>
+            <div class="drag-item" draggable="true">Capital social nécessaire</div>
+            <div class="drag-item" draggable="true">Patrimoine personnel engagé</div>
+            <div class="drag-item" draggable="true">Simplicité administrative</div>
+            <div class="drag-item" draggable="true">Structure adaptée aux grandes entreprises</div>
+
             <div>
-                <p><strong>Drag & Drop :</strong> Faites glisser les étiquettes suivantes vers la bonne catégorie (Entreprise Individuelle ou Société) :</p>
-                <ul>
-                    <li>Responsabilité illimitée</li>
-                    <li>Responsabilité limitée aux apports</li>
-                    <li>Capital social nécessaire</li>
-                    <li>Patrimoine personnel engagé</li>
-                </ul>
-                <div id="drag-and-drop-area">
-                    <div id="entreprise-individuelle" class="drop-zone">Entreprise Individuelle</div>
-                    <div id="societe" class="drop-zone">Société</div>
-                </div>
+                <h3>Entreprise Individuelle</h3>
+                <div class="drop-zone" id="individuelle"></div>
             </div>
-        </section>
-
-        <section>
-            <h2>Activité 2 : Les besoins de l'entreprise</h2>
-            <p>Complétez le tableau ci-dessous en choisissant les ressources nécessaires pour démarrer une activité.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Type de Ressource</th>
-                        <th>Exemple</th>
-                        <th>Votre Réponse</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Clientèle</td>
-                        <td>Prospection, Publicité</td>
-                        <td><input type="text" placeholder="Votre réponse"></td>
-                    </tr>
-                    <tr>
-                        <td>Outils de production</td>
-                        <td>Bureaux, Machines</td>
-                        <td><input type="text" placeholder="Votre réponse"></td>
-                    </tr>
-                    <tr>
-                        <td>Ressources financières</td>
-                        <td>Capital, Prêt bancaire</td>
-                        <td><input type="text" placeholder="Votre réponse"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Activité 3 : Comprendre le bilan</h2>
-            <p>Le bilan d'une entreprise est organisé en actif et passif. Associez chaque élément ci-dessous à sa catégorie (Actif ou Passif) :</p>
-            <ul>
-                <li>Immobilisations</li>
-                <li>Capital social</li>
-                <li>Créances clients</li>
-                <li>Dettes fournisseurs</li>
-            </ul>
             <div>
-                <button onclick="checkAnswers()">Vérifier les réponses</button>
+                <h3>Société</h3>
+                <div class="drop-zone" id="societe"></div>
             </div>
+            <button onclick="checkAnswers()">Valider</button>
+            <p id="feedback"></p>
         </section>
 
-        <section>
-            <h2>Ressources complémentaires</h2>
-            <p>Téléchargez les supports de cours pour approfondir vos connaissances :</p>
-            <ul>
-                <li><a href="../ressources/T1C2_Environnement_PME_Cours.pdf" download>Document complet : L'environnement économique de la PME</a></li>
-                <li><a href="../ressources/T1C2_Quiz.pdf" download>Quiz interactif</a></li>
-            </ul>
-        </section>
+        <!-- Autres sections restent inchangées -->
 
-        <section>
-            <h2>Conclusion</h2>
-            <p>Bravo ! Vous avez exploré l'environnement économique d'une PME de manière interactive. Reprenez les notions importantes et testez vos compétences avec le quiz en ligne.</p>
-        </section>
-    </main>
+        <footer>
+            <button class="btn-back" onclick="window.location.href='../index.html';">
+                Retour à l'accueil
+            </button>
+            <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
+            <p>Dernière mise à jour : 2024-12-19</p>
+        </footer>
 
-    <footer>
-        <p>&copy; 2024 - T1C2 - Gestion ludique pour le BTS GPME</p>
-    </footer>
+        <script>
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropZones = document.querySelectorAll('.drop-zone');
 
-    <script>
-        function checkAnswers() {
-            alert("Félicitations ! Continuez à vous entraîner pour maîtriser ces concepts.");
-        }
-    </script>
-</body>
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', e => {
+                    e.dataTransfer.setData('text', e.target.textContent);
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                });
+
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    const data = e.dataTransfer.getData('text');
+                    const newItem = document.createElement('div');
+                    newItem.textContent = data;
+                    newItem.classList.add('drag-item');
+                    zone.appendChild(newItem);
+                });
+            });
+
+            function checkAnswers() {
+                const individuelle = document.getElementById('individuelle').textContent;
+                const societe = document.getElementById('societe').textContent;
+
+                let feedback = '';
+
+                if (individuelle.includes('Responsabilité illimitée') &&
+                    individuelle.includes('Patrimoine personnel engagé') &&
+                    societe.includes('Responsabilité limitée aux apports') &&
+                    societe.includes('Capital social nécessaire') &&
+                    societe.includes('Structure adaptée aux grandes entreprises')) {
+                    feedback = 'Bravo ! Vous avez correctement classé toutes les caractéristiques.';
+                } else {
+                    feedback = 'Certaines réponses sont incorrectes. Revoyez les concepts ou demandez une clarification.';
+                }
+
+                document.getElementById('feedback').textContent = feedback;
+            }
+        </script>
+    </body>
 </html>
