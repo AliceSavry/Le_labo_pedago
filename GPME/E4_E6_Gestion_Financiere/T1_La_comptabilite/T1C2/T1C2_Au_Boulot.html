@@ -62,9 +62,6 @@
             text-align: center;
             padding: 10px;
             background-color: #f8bbd0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
         }
     </style>
 </head>
@@ -128,7 +125,7 @@
 
             dragItems.forEach(item => {
                 item.addEventListener('dragstart', e => {
-                    e.dataTransfer.setData('text/plain', e.target.outerHTML);
+                    e.dataTransfer.setData('text/plain', item.id);
                     setTimeout(() => {
                         item.style.display = 'none';
                     }, 0);
@@ -146,11 +143,12 @@
 
                 zone.addEventListener('drop', e => {
                     e.preventDefault();
-                    const data = e.dataTransfer.getData('text/plain');
-                    const container = document.createElement('div');
-                    container.innerHTML = data;
-                    const draggedItem = container.firstElementChild;
-                    zone.appendChild(draggedItem);
+                    const itemId = e.dataTransfer.getData('text/plain');
+                    const draggedItem = document.getElementById(itemId);
+                    if (draggedItem) {
+                        zone.appendChild(draggedItem);
+                        draggedItem.style.display = 'inline-block';
+                    }
                 });
             });
         });
