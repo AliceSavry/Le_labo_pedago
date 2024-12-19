@@ -13,58 +13,49 @@
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             cursor: grab;
+        }
+        .drop-zone {
+            border: 2px solid #aaa;
+            padding: 20px;
+            margin: 20px;
+            min-height: 150px;
+            width: 45%;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            text-align: center;
+        }
+        .drop-zone span {
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #aaa;
+            font-size: 16px;
+            pointer-events: none;
+        }
+        .drop-zone.ei {
+            background-color: #e0f7fa;
+        }
+        .drop-zone.societe {
+            background-color: #ede7f6;
         }
         body {
-            position: relative;
-            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
-        .bubble {
-            position: absolute;
-            background-color: rgba(173, 216, 230, 0.6);
-            border-radius: 50%;
-            animation: float 6s infinite;
+        header {
+            background-color: #f8bbd0;
+            padding: 20px;
+            text-align: center;
         }
-        .bubble:nth-child(1) {
-            width: 40px;
-            height: 40px;
-            left: 20%;
-            animation-duration: 5s;
-        }
-        .bubble:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            left: 40%;
-            animation-duration: 7s;
-        }
-        .bubble:nth-child(3) {
-            width: 50px;
-            height: 50px;
-            left: 60%;
-            animation-duration: 6s;
-        }
-        .bubble:nth-child(4) {
-            width: 70px;
-            height: 70px;
-            left: 80%;
-            animation-duration: 8s;
-        }
-        .bubble:nth-child(5) {
-            width: 30px;
-            height: 30px;
-            left: 10%;
-            animation-duration: 4s;
-        }
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f8bbd0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -76,57 +67,123 @@
             <a href="../theme1.html">Thème 1 : La comptabilité</a> &gt; 
             <span>T1C2 : L'environnement économique de la PME</span>
         </nav>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
     </header>
 
     <main>
         <section>
-            <h2>Déplacez les étiquettes où vous voulez</h2>
-            <div id="drag-container">
-                <div class="drag-item" id="item1" draggable="true" style="top: 100px; left: 50px;">Responsabilité illimitée</div>
-                <div class="drag-item" id="item2" draggable="true" style="top: 150px; left: 150px;">Responsabilité limitée aux apports</div>
-                <div class="drag-item" id="item3" draggable="true" style="top: 200px; left: 250px;">Capital social nécessaire</div>
-                <div class="drag-item" id="item4" draggable="true" style="top: 250px; left: 350px;">Patrimoine personnel engagé</div>
-                <div class="drag-item" id="item5" draggable="true" style="top: 300px; left: 450px;">Simplicité administrative</div>
-                <div class="drag-item" id="item6" draggable="true" style="top: 350px; left: 550px;">Structure adaptée aux grandes entreprises</div>
-                <div class="drag-item" id="item7" draggable="true" style="top: 400px; left: 650px;">Facilité de transmission</div>
-                <div class="drag-item" id="item8" draggable="true" style="top: 450px; left: 750px;">Obligation d'avoir des associés</div>
+            <h2>Classez les étiquettes dans les bonnes catégories</h2>
+            <div>
+                <div class="drop-zone ei" id="ei-zone">
+                    <span>Entreprise Individuelle 🏠</span>
+                </div>
+                <div class="drop-zone societe" id="societe-zone">
+                    <span>Société 🏢</span>
+                </div>
             </div>
+
+            <div id="drag-container">
+                <div class="drag-item" draggable="true">Responsabilité illimitée</div>
+                <div class="drag-item" draggable="true">Responsabilité limitée aux apports</div>
+                <div class="drag-item" draggable="true">Capital social nécessaire</div>
+                <div class="drag-item" draggable="true">Patrimoine personnel engagé</div>
+                <div class="drag-item" draggable="true">Simplicité administrative</div>
+                <div class="drag-item" draggable="true">Structure adaptée aux grandes entreprises</div>
+                <div class="drag-item" draggable="true">Facilité de transmission</div>
+                <div class="drag-item" draggable="true">Obligation d'avoir des associés</div>
+                <div class="drag-item" draggable="true">Pas de capital minimum</div>
+                <div class="drag-item" draggable="true">Gérant unique</div>
+                <div class="drag-item" draggable="true">Risque financier limité</div>
+                <div class="drag-item" draggable="true">Formalités simples</div>
+                <div class="drag-item" draggable="true">Responsabilité sur les biens personnels</div>
+                <div class="drag-item" draggable="true">Plusieurs associés possibles</div>
+                <div class="drag-item" draggable="true">Partage des bénéfices</div>
+            </div>
+
+            <button onclick="checkAnswers()">Valider</button>
+            <p id="feedback"></p>
         </section>
+    </main>
 
-        <footer>
-            <button class="btn-back" onclick="window.location.href='../index.html';">
-                Retour à l'accueil
-            </button>
-            <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
-            <p>Dernière mise à jour : 2024-12-19</p>
-        </footer>
+    <footer>
+        <button class="btn-back" onclick="window.location.href='../index.html';">
+            Retour à l'accueil
+        </button>
+        <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
+        <p>Dernière mise à jour : 2024-12-19</p>
+    </footer>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const dragItems = document.querySelectorAll('.drag-item');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropZones = document.querySelectorAll('.drop-zone');
 
-                dragItems.forEach(item => {
-                    item.addEventListener('dragstart', e => {
-                        e.dataTransfer.setData('text/plain', `${e.target.id}|${e.clientX}|${e.clientY}`);
-                    });
-
-                    item.addEventListener('dragend', e => {
-                        const [id, startX, startY] = e.dataTransfer.getData('text/plain').split('|');
-                        const draggedItem = document.getElementById(id);
-                        const offsetX = e.clientX - parseInt(startX, 10);
-                        const offsetY = e.clientY - parseInt(startY, 10);
-                        const rect = draggedItem.getBoundingClientRect();
-
-                        draggedItem.style.left = `${rect.left + offsetX}px`;
-                        draggedItem.style.top = `${rect.top + offsetY}px`;
-                    });
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', e => {
+                    e.dataTransfer.setData('text/plain', e.target.textContent);
                 });
             });
-        </script>
-    </body>
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                });
+
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    const data = e.dataTransfer.getData('text/plain');
+                    const draggedItem = Array.from(dragItems).find(item => item.textContent === data);
+                    if (draggedItem) {
+                        e.target.appendChild(draggedItem);
+                    }
+                });
+            });
+        });
+
+        function checkAnswers() {
+            const eiZone = document.getElementById('ei-zone');
+            const societeZone = document.getElementById('societe-zone');
+
+            const eiItems = Array.from(eiZone.querySelectorAll('.drag-item')).map(item => item.textContent);
+            const societeItems = Array.from(societeZone.querySelectorAll('.drag-item')).map(item => item.textContent);
+
+            const correctEi = [
+                'Responsabilité illimitée',
+                'Patrimoine personnel engagé',
+                'Simplicité administrative',
+                'Pas de capital minimum',
+                'Responsabilité sur les biens personnels',
+                'Gérant unique'
+            ];
+
+            const correctSociete = [
+                'Responsabilité limitée aux apports',
+                'Capital social nécessaire',
+                'Structure adaptée aux grandes entreprises',
+                'Facilité de transmission',
+                'Obligation d'avoir des associés',
+                'Risque financier limité',
+                'Partage des bénéfices',
+                'Plusieurs associés possibles'
+            ];
+
+            let feedback = 'Vérifiez vos réponses :\n';
+
+            const incorrectEi = eiItems.filter(item => !correctEi.includes(item));
+            const incorrectSociete = societeItems.filter(item => !correctSociete.includes(item));
+
+            if (incorrectEi.length === 0 && incorrectSociete.length === 0) {
+                feedback = 'Bravo ! Toutes les réponses sont correctes.';
+            } else {
+                if (incorrectEi.length > 0) {
+                    feedback += `Entreprise Individuelle : ${incorrectEi.join(', ')} sont incorrects.\n`;
+                }
+                if (incorrectSociete.length > 0) {
+                    feedback += `Société : ${incorrectSociete.join(', ')} sont incorrects.`;
+                }
+            }
+
+            document.getElementById('feedback').textContent = feedback;
+        }
+    </script>
+</body>
 </html>
