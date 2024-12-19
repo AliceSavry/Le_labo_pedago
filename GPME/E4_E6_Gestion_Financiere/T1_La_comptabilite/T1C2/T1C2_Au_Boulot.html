@@ -13,26 +13,35 @@
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             cursor: grab;
+            text-align: center;
+        }
+        #drag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+            justify-content: center;
         }
         .drop-zone {
             border: 2px solid #aaa;
             padding: 20px;
             margin: 20px;
-            min-height: 150px;
+            min-height: 300px;
             width: 45%;
             display: inline-block;
             vertical-align: top;
             position: relative;
             text-align: center;
+            overflow: auto;
         }
         .drop-zone span {
             position: absolute;
-            top: 50%;
+            top: 10px;
             left: 50%;
-            transform: translate(-50%, -50%);
-            color: #aaa;
-            font-size: 16px;
-            pointer-events: none;
+            transform: translateX(-50%);
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
         }
         .drop-zone.ei {
             background-color: #e0f7fa;
@@ -72,7 +81,7 @@
     <main>
         <section>
             <h2>Classez les étiquettes dans les bonnes catégories</h2>
-            <div>
+            <div style="display: flex; justify-content: space-around;">
                 <div class="drop-zone ei" id="ei-zone">
                     <span>Entreprise Individuelle 🏠</span>
                 </div>
@@ -119,7 +128,14 @@
 
             dragItems.forEach(item => {
                 item.addEventListener('dragstart', e => {
-                    e.dataTransfer.setData('text/plain', e.target.textContent);
+                    e.dataTransfer.setData('text/plain', e.target.outerHTML);
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 0);
+                });
+
+                item.addEventListener('dragend', () => {
+                    item.style.display = 'inline-block';
                 });
             });
 
@@ -131,10 +147,10 @@
                 zone.addEventListener('drop', e => {
                     e.preventDefault();
                     const data = e.dataTransfer.getData('text/plain');
-                    const draggedItem = Array.from(dragItems).find(item => item.textContent === data);
-                    if (draggedItem) {
-                        e.target.appendChild(draggedItem);
-                    }
+                    const container = document.createElement('div');
+                    container.innerHTML = data;
+                    const draggedItem = container.firstElementChild;
+                    zone.appendChild(draggedItem);
                 });
             });
         });
