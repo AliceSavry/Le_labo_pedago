@@ -88,21 +88,21 @@
             </div>
 
             <div id="drag-container">
-                <div class="drag-item" draggable="true">Responsabilité illimitée</div>
-                <div class="drag-item" draggable="true">Responsabilité limitée aux apports</div>
-                <div class="drag-item" draggable="true">Capital social nécessaire</div>
-                <div class="drag-item" draggable="true">Patrimoine personnel engagé</div>
-                <div class="drag-item" draggable="true">Simplicité administrative</div>
-                <div class="drag-item" draggable="true">Structure adaptée aux grandes entreprises</div>
-                <div class="drag-item" draggable="true">Facilité de transmission</div>
-                <div class="drag-item" draggable="true">Obligation d'avoir des associés</div>
-                <div class="drag-item" draggable="true">Pas de capital minimum</div>
-                <div class="drag-item" draggable="true">Gérant unique</div>
-                <div class="drag-item" draggable="true">Risque financier limité</div>
-                <div class="drag-item" draggable="true">Formalités simples</div>
-                <div class="drag-item" draggable="true">Responsabilité sur les biens personnels</div>
-                <div class="drag-item" draggable="true">Plusieurs associés possibles</div>
-                <div class="drag-item" draggable="true">Partage des bénéfices</div>
+                <div class="drag-item" id="item1" draggable="true">Responsabilité illimitée</div>
+                <div class="drag-item" id="item2" draggable="true">Responsabilité limitée aux apports</div>
+                <div class="drag-item" id="item3" draggable="true">Capital social nécessaire</div>
+                <div class="drag-item" id="item4" draggable="true">Patrimoine personnel engagé</div>
+                <div class="drag-item" id="item5" draggable="true">Simplicité administrative</div>
+                <div class="drag-item" id="item6" draggable="true">Structure adaptée aux grandes entreprises</div>
+                <div class="drag-item" id="item7" draggable="true">Facilité de transmission</div>
+                <div class="drag-item" id="item8" draggable="true">Obligation d'avoir des associés</div>
+                <div class="drag-item" id="item9" draggable="true">Pas de capital minimum</div>
+                <div class="drag-item" id="item10" draggable="true">Gérant unique</div>
+                <div class="drag-item" id="item11" draggable="true">Risque financier limité</div>
+                <div class="drag-item" id="item12" draggable="true">Formalités simples</div>
+                <div class="drag-item" id="item13" draggable="true">Responsabilité sur les biens personnels</div>
+                <div class="drag-item" id="item14" draggable="true">Plusieurs associés possibles</div>
+                <div class="drag-item" id="item15" draggable="true">Partage des bénéfices</div>
             </div>
 
             <button onclick="checkAnswers()">Valider</button>
@@ -126,13 +126,6 @@
             dragItems.forEach(item => {
                 item.addEventListener('dragstart', e => {
                     e.dataTransfer.setData('text/plain', item.id);
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 0);
-                });
-
-                item.addEventListener('dragend', () => {
-                    item.style.display = 'inline-block';
                 });
             });
 
@@ -147,7 +140,8 @@
                     const draggedItem = document.getElementById(itemId);
                     if (draggedItem) {
                         zone.appendChild(draggedItem);
-                        draggedItem.style.display = 'inline-block';
+                        draggedItem.style.margin = '5px';
+                        draggedItem.style.cursor = 'grab';
                     }
                 });
             });
