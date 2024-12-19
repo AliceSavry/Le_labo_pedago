@@ -93,7 +93,8 @@
     </header>
 
     <main>
-        <h2>Classez les étiquettes dans les bonnes catégories</h2>
+        <h2>Activité 1 : La forme juridique de l'entreprise</h2>
+        <p>Classez les étiquettes dans les bonnes catégories</p>
         <div style="display: flex; justify-content: space-around;">
             <div class="drop-zone ei" id="ei-zone">
                 <span>Entreprise Individuelle 🏠</span>
@@ -131,37 +132,61 @@
         <p id="feedback"></p>
 
         <section>
-    <h2>Mise en situation : Explorer les besoins et les ressources</h2>
+    <h2 style="margin-bottom: 20px;">🎲 Mise en situation : Explorer les besoins et les ressources</h2>
     <p>Avant de commencer, rappelez-vous :</p>
-    <ul>
+    <ul style="text-align: left; max-width: 600px; margin: 0 auto; line-height: 1.6;">
         <li><strong>Besoins :</strong> Ce sont les éléments nécessaires au fonctionnement de l’entreprise (ex. : achat de matériel, loyer, recrutement).</li>
         <li><strong>Ressources de financement :</strong> Ce sont les moyens dont dispose l’entreprise pour couvrir ses besoins (ex. : apport personnel, prêt bancaire, subventions).</li>
     </ul>
     <p>Appuyez sur le bouton pour tirer au sort une situation de création d'entreprise et réfléchissez aux besoins et ressources nécessaires pour son démarrage.</p>
 
-    <button onclick="generateScenario()">Tirer au sort une situation</button>
+    <button onclick="generateScenario()" style="
+        padding: 10px 20px; 
+        margin: 20px 0; 
+        font-size: 1rem; 
+        font-weight: bold; 
+        color: white; 
+        background-color: #4caf50; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer; 
+        transition: all 0.3s ease;">
+        🎲 Tirer une carte
+    </button>
 
-    <div id="scenario" class="scenario-container">
-        <p>Aucune situation n'a encore été tirée au sort.</p>
+    <div id="scenario" class="scenario-container" style="
+        margin-top: 20px; 
+        padding: 20px; 
+        max-width: 600px; 
+        margin: 20px auto; 
+        text-align: center; 
+        border: 3px solid #ffeb3b; 
+        border-radius: 10px; 
+        background-color: #fff8e1; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <p style="font-size: 1.2rem; color: #333;">🎲 Aucune carte n'a encore été tirée. Cliquez sur le bouton pour commencer !</p>
     </div>
 </section>
 
 <script>
     function generateScenario() {
         const scenarios = [
-            "Vous lancez une boulangerie artisanale dans un quartier résidentiel. Pensez aux équipements nécessaires, au personnel, et aux financements possibles.",
-            "Vous démarrez une entreprise de développement d'applications mobiles. Réfléchissez aux outils, au marketing, et aux sources de financement pour votre projet.",
-            "Vous créez un atelier de réparation de vélos dans une zone urbaine. Quels sont vos besoins initiaux et comment les financer ?",
-            "Vous ouvrez un salon de coiffure haut de gamme. Identifiez vos besoins en matériel, locaux et ressources humaines, ainsi que vos financements possibles."
+            "🥐 <strong>Boulangerie Artisanale :</strong> Vous lancez une boulangerie dans un quartier résidentiel. Pensez aux équipements nécessaires, au personnel, et aux financements possibles.",
+            "📱 <strong>Développement d'applications mobiles :</strong> Vous démarrez une entreprise spécialisée dans le développement d'applications. Réfléchissez aux outils, au marketing, et aux sources de financement.",
+            "🚲 <strong>Atelier de réparation de vélos :</strong> Vous créez un atelier dans une zone urbaine. Quels sont vos besoins initiaux et comment les financer ?",
+            "💇‍♀️ <strong>Salon de coiffure haut de gamme :</strong> Vous ouvrez un salon de coiffure. Identifiez vos besoins en matériel, locaux et ressources humaines, ainsi que vos financements possibles."
         ];
 
         const randomIndex = Math.floor(Math.random() * scenarios.length);
         const selectedScenario = scenarios[randomIndex];
 
         const scenarioDiv = document.getElementById('scenario');
-        scenarioDiv.innerHTML = `<p><strong>Situation tirée au sort :</strong> ${selectedScenario}</p>`;
+        scenarioDiv.innerHTML = `
+            <p style="font-size: 1.5rem; font-weight: bold; color: #333;">Voici votre carte :</p>
+            <p style="font-size: 1.2rem; color: #555; line-height: 1.8;">${selectedScenario}</p>`;
     }
 </script>
+
 
     </main>
 
