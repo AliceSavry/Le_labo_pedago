@@ -16,10 +16,80 @@
             padding: 20px;
             text-align: center;
             color: white;
+            position: relative;
         }
         header h1 {
             font-size: 2rem;
         }
+        nav.breadcrumb {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        nav.breadcrumb a {
+            color: #555;
+            text-decoration: none;
+        }
+        nav.breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Bubble Animation */
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: bubbleMove 6s infinite ease-in-out;
+            z-index: 2;
+        }
+
+        @keyframes bubbleMove {
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-300px) scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-600px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 30px;
+            height: 30px;
+            animation-duration: 8s;
+        }
+        .bubble:nth-child(2) {
+            left: 30%;
+            animation-duration: 5s;
+        }
+        .bubble:nth-child(3) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-duration: 7s;
+        }
+        .bubble:nth-child(4) {
+            left: 70%;
+            animation-duration: 9s;
+        }
+        .bubble:nth-child(5) {
+            left: 90%;
+            width: 40px;
+            height: 40px;
+            animation-duration: 6s;
+        }
+
         main {
             padding: 20px;
             text-align: center;
@@ -77,6 +147,16 @@
 <body>
     <header>
         <h1>T1C2 - L'environnement économique de la PME</h1>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <nav class="breadcrumb">
+            <a href="../index.html">Accueil</a> &gt; 
+            <a href="../theme1.html">Thème 1 : La comptabilité</a> &gt; 
+            <span>T1C2 : L'environnement économique de la PME</span>
+        </nav>
     </header>
 
     <main>
