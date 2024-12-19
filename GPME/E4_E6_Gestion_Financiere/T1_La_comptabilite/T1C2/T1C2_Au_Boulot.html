@@ -34,62 +34,6 @@
         nav.breadcrumb a:hover {
             text-decoration: underline;
         }
-
-        /* Bubble Animation */
-        .bubble {
-            position: absolute;
-            bottom: -50px;
-            width: 20px;
-            height: 20px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: bubbleMove 6s infinite ease-in-out;
-            z-index: 2;
-        }
-
-        @keyframes bubbleMove {
-            0% {
-                transform: translateY(0) scale(0.8);
-                opacity: 0.8;
-            }
-            50% {
-                transform: translateY(-300px) scale(1);
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-600px) scale(1.2);
-                opacity: 0;
-            }
-        }
-
-        .bubble:nth-child(1) {
-            left: 10%;
-            width: 30px;
-            height: 30px;
-            animation-duration: 8s;
-        }
-        .bubble:nth-child(2) {
-            left: 30%;
-            animation-duration: 5s;
-        }
-        .bubble:nth-child(3) {
-            left: 50%;
-            width: 25px;
-            height: 25px;
-            animation-duration: 7s;
-        }
-        .bubble:nth-child(4) {
-            left: 70%;
-            animation-duration: 9s;
-        }
-        .bubble:nth-child(5) {
-            left: 90%;
-            width: 40px;
-            height: 40px;
-            animation-duration: 6s;
-        }
-
         main {
             padding: 20px;
             text-align: center;
@@ -99,8 +43,6 @@
             padding: 10px;
             background-color: #f8bbd0;
         }
-
-        /* Drag and Drop Styles */
         #drag-container {
             display: flex;
             flex-wrap: wrap;
@@ -128,14 +70,6 @@
             text-align: center;
             position: relative;
         }
-        .drop-zone span {
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 16px;
-            font-weight: bold;
-        }
         .drop-zone.ei {
             background-color: #e0f7fa;
         }
@@ -147,11 +81,6 @@
 <body>
     <header>
         <h1>T1C2 - L'environnement économique de la PME</h1>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
         <nav class="breadcrumb">
             <a href="../index.html">Accueil</a> &gt; 
             <a href="../theme1.html">Thème 1 : La comptabilité</a> &gt; 
@@ -177,16 +106,6 @@
             <div class="drag-item" id="item3" draggable="true">Capital social nécessaire</div>
             <div class="drag-item" id="item4" draggable="true">Patrimoine personnel engagé</div>
             <div class="drag-item" id="item5" draggable="true">Simplicité administrative</div>
-            <div class="drag-item" id="item6" draggable="true">Structure adaptée aux grandes entreprises</div>
-            <div class="drag-item" id="item7" draggable="true">Facilité de transmission</div>
-            <div class="drag-item" id="item8" draggable="true">Obligation d'avoir des associés</div>
-            <div class="drag-item" id="item9" draggable="true">Pas de capital minimum</div>
-            <div class="drag-item" id="item10" draggable="true">Gérant unique</div>
-            <div class="drag-item" id="item11" draggable="true">Risque financier limité</div>
-            <div class="drag-item" id="item12" draggable="true">Formalités simples</div>
-            <div class="drag-item" id="item13" draggable="true">Responsabilité sur les biens personnels</div>
-            <div class="drag-item" id="item14" draggable="true">Plusieurs associés possibles</div>
-            <div class="drag-item" id="item15" draggable="true">Partage des bénéfices</div>
         </div>
 
         <button onclick="checkAnswers()">Valider</button>
@@ -224,52 +143,6 @@
                 });
             });
         });
-
-        function checkAnswers() {
-            const eiZone = document.getElementById('ei-zone');
-            const societeZone = document.getElementById('societe-zone');
-
-            const eiItems = Array.from(eiZone.querySelectorAll('.drag-item')).map(item => item.textContent);
-            const societeItems = Array.from(societeZone.querySelectorAll('.drag-item')).map(item => item.textContent);
-
-            const correctEi = [
-                'Responsabilité illimitée',
-                'Patrimoine personnel engagé',
-                'Simplicité administrative',
-                'Pas de capital minimum',
-                'Responsabilité sur les biens personnels',
-                'Gérant unique'
-            ];
-
-            const correctSociete = [
-                'Responsabilité limitée aux apports',
-                'Capital social nécessaire',
-                'Structure adaptée aux grandes entreprises',
-                'Facilité de transmission',
-                'Obligation d'avoir des associés',
-                'Risque financier limité',
-                'Partage des bénéfices',
-                'Plusieurs associés possibles'
-            ];
-
-            let feedback = '';
-
-            const incorrectEi = eiItems.filter(item => !correctEi.includes(item));
-            const incorrectSociete = societeItems.filter(item => !correctSociete.includes(item));
-
-            if (incorrectEi.length === 0 && incorrectSociete.length === 0) {
-                feedback = 'Bravo ! Toutes les réponses sont correctes.';
-            } else {
-                if (incorrectEi.length > 0) {
-                    feedback += `Entreprise Individuelle : ${incorrectEi.join(', ')} sont incorrects.\n`;
-                }
-                if (incorrectSociete.length > 0) {
-                    feedback += `Société : ${incorrectSociete.join(', ')} sont incorrects.`;
-                }
-            }
-
-            document.getElementById('feedback').textContent = feedback;
-        }
     </script>
 </body>
 </html>
