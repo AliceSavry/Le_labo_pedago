@@ -17,8 +17,15 @@
         .drop-zone {
             border: 2px dashed #aaa;
             padding: 15px;
-            margin: 10px 0;
-            min-height: 50px;
+            margin: 10px;
+            min-height: 100px;
+            width: 45%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .drop-zone.locked {
+            background-color: #e0e0e0;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -29,12 +36,6 @@
             <a href="../index.html">Accueil</a> &gt; 
             <a href="../theme1.html">Thème 1 : La comptabilité</a> &gt; 
             <span>T1C2 : L'environnement économique de la PME</span>
-                    <!-- Bulles Montantes -->
-                    <div class="bubble"></div>
-                    <div class="bubble"></div>
-                    <div class="bubble"></div>
-                    <div class="bubble"></div>
-                    <div class="bubble"></div>
         </nav>
     </header>
 
@@ -50,6 +51,8 @@
             <div class="drag-item" draggable="true">Patrimoine personnel engagé</div>
             <div class="drag-item" draggable="true">Simplicité administrative</div>
             <div class="drag-item" draggable="true">Structure adaptée aux grandes entreprises</div>
+            <div class="drag-item" draggable="true">Facilité de transmission</div>
+            <div class="drag-item" draggable="true">Obligation d'avoir des associés</div>
 
             <div>
                 <h3>Entreprise Individuelle</h3>
@@ -62,6 +65,70 @@
             <button onclick="checkAnswers()">Valider</button>
             <p id="feedback"></p>
         </section>
+
+        <footer>
+            <button class="btn-back" onclick="window.location.href='../index.html';">
+                Retour à l'accueil
+            </button>
+            <p>&copy; 2024 Le Labo Pédago/Alice SAVRY. Tous droits réservés.</p>
+            <p>Dernière mise à jour : 2024-12-19</p>
+        </footer>
+
+        <script>
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', e => {
+                    e.dataTransfer.setData('text', e.target.textContent);
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                });
+
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    const data = e.dataTransfer.getData('text');
+                    const newItem = document.createElement('div');
+                    newItem.textContent = data;
+                    newItem.classList.add('drag-item');
+                    e.target.appendChild(newItem);
+                });
+            });
+
+            function checkAnswers() {
+                const individuelle = document.getElementById('individuelle').textContent;
+                const societe = document.getElementById('societe').textContent;
+
+                let feedback = '';
+
+                if (individuelle.includes('Responsabilité illimitée') &&
+                    individuelle.includes('Patrimoine personnel engagé') &&
+                    individuelle.includes('Simplicité administrative') &&
+                    societe.includes('Responsabilité limitée aux apports') &&
+                    societe.includes('Capital social nécessaire') &&
+                    societe.includes('Structure adaptée aux grandes entreprises') &&
+                    societe.includes('Facilité de transmission') &&
+                    societe.includes('Obligation d'avoir des associés')) {
+                    feedback = 'Bravo ! Vous avez correctement classé toutes les caractéristiques.';
+
+                    dropZones.forEach(zone => {
+                        zone.classList.add('locked');
+                    });
+
+                } else {
+                    feedback = 'Certaines réponses sont incorrectes. Revoyez les concepts ou demandez une clarification.';
+                }
+
+                document.getElementById('feedback').textContent = feedback;
+            }
+        </script>
+    </body>
+</html>
+
 
         <!-- Bloc 2 : Exploration du bilan -->
         <section>
